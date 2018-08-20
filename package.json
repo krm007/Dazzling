@@ -1,0 +1,19 @@
+{
+  "name": "dazzling",
+  "version": "1.0.0",
+  "description": "美美哒——美妆项目",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/krm007/Dazzling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/krm007/Dazzling/issues"
+  },
+  "homepage": "https://github.com/krm007/Dazzling#readme"
+}
