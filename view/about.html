@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./about.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <el-row :gutter="2">
+                    <el-col :sm="3" :xs="4" :offset="3">
+                        <div class="grid-content 
+
+bg-purple">
+                            <a href="#">1</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple">
+                            <a href="#">首页</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple">
+                            <a href="#">精选</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple">
+                            <a href="#">关于我们</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple">
+                            <a href="#">招商</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple">
+                            <a href="#">个人中心</a>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-header>
+            <!-- 以上是顶部导航内容 -->
+            <el-main>Main</el-main>
+            <!-- 以上是中间内容部分 -->
+            <el-footer>
+                <el-row :gutter="20">
+                    <!-- 底部左侧内容 -->
+                    <el-col :span="4" :offset="4">
+                        <div class="grid-content bg-purple">
+
+                            left
+
+
+                        </div>
+                    </el-col>
+
+                    <!-- 底部右侧内容 -->
+                    <el-col :span="12">
+                        <div class="grid-content bg-
+
+purple">right</div>
+                    </el-col>
+
+                </el-row>
+            </el-footer>
+        </el-container>
+    </div>
+
+
+    <script src="http://unpkg.com/vue/dist/vue.js"></script>
+    <script src="http://unpkg.com/element-ui@2.4.6/lib/index.js"></script>
+    <script>
+        new Vue({
+            el: '#app'
+
+        })
+    </script>
+</body>
+
+</html>

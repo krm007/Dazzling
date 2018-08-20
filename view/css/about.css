@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0
+}
+a{
+    text-decoration: none
+}
+
+.el-header{
+color: #333;
+text-align: center;
+line-height: 50px;
+border-bottom: 1px solid gainsboro;
+box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
+}
+.el-header a{
+    color: black
+}
+.el-col {
+    border-radius: 4px;
+  }
+  .bg-purple-dark {
+    background: #99a9bf;
+  }
+  .bg-purple {
+    background: #d3dce6;
+  }
+  .bg-purple-light {
+    background: #e5e9f2;
+  }
+  .grid-content {
+    border-radius: 4px;
+  
+    font-size: 14px
+  }
+  /* 以上是顶部导航的样式 */
+
+  .el-footer{
+     background-color: #e5e9f2;
+     margin-top: 10px;
+     height: 200px !important;
+  }
+.el-main {
+background-color: #E9EEF3;
+color: #333;
+text-align: center;
+line-height: 160px;
+margin-top: 10px
+}
