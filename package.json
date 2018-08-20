@@ -15,5 +15,16 @@
   "bugs": {
     "url": "https://github.com/krm007/Dazzling/issues"
   },
-  "homepage": "https://github.com/krm007/Dazzling#readme"
+  "homepage": "https://github.com/krm007/Dazzling#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "md5": "^2.2.1",
+    "multer": "^1.3.1",
+    "mysql": "^2.16.0",
+    "svg-captcha": "^1.3.11"
+  }
 }
