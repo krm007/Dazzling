@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="shortcut icon" href="/image/small.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/display.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <div class="nav_1">
+                <el-row :gutter="5">
+                    <!-- logo部分 -->
+                    <el-col :span="8" :sm="8" class="hidden-xs-only">
+                        <el-row :gutter="5">
+                            <el-col :span="14" :offset="10">
+                                <el-row :gutter="5">
+                                    <el-col :span="14" :sm="14" :xs="24" class="hidden-xs-only">
+                                        <div class="right">
+                                            <img src="/image/logo.png" alt="这里是logo">
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="10" :sm="10" :xs="24" class="hidden-xs-only">
+                                        <div class="left">
+                                            <p>美美哒</p>
+                                        </div>
+                                    </el-col>
+                                </el-row>
+                            </el-col>
+                        </el-row>
+                    </el-col><!-- logo-end -->
+                    <!-- 导航部分 -->
+                    <el-col :span="16" :sm="16" >
+                        <el-row :gutter="8">
+                            <el-col :span="16">
+                                    <el-row :gutter="5">
+                                        <el-col :span="4" :sm="4" :xs="24" :offset="4">
+                                            <div class="left"><a href="#">首页</a></div>
+                                        </el-col>
+                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                            <div class="left"><a href="#">社区精选</a></div>
+                                        </el-col>
+                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                            <div class="left"><a href="#">关于我们</a></div>
+                                        </el-col>
+                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                            <div class="left"><a href="#">招商合作</a></div>
+                                        </el-col>
+                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                            <div class="left"><a href="#">个人中心</a></div>
+                                        </el-col>
+                                        <!-- <el-col :span="4">
+                                            <div class="left"></div>
+                                        </el-col> -->
+                                    </el-row>
+                            </el-col>
+                        </el-row>
+                    </el-col>
+                    <!-- 导航部分end -->
+                </el-row>
+            </div>
+        </header>
+
+        <section>
+            <div>第一部分
+                    <el-row :gutter="5">
+                        <el-col :span="20" :offset="2"></el-col>
+                    </el-row>
+            </div>
+            <div>第二部分</div>
+            <div>第三部分</div>
+        </section>
+        <footer>这是底部区域</footer>
+    </div>
+    <!--引入vue库-->
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods:{
+                
+            }
+        })
+    </script>
+</body>
+
+</html>

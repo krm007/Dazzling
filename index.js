@@ -45,14 +45,14 @@ server.engine('html', ejs.renderFile);
 server.set('view engine', 'html');
 server.set('views', 'view');
 //数据库连接
-global.mydb = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '123456',
-    port: 3306,
-    database: 'interview'
-});
-mydb.connect();
+// global.mydb = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '123456',
+//     port: 3306,
+//     database: 'interview'
+// });
+// mydb.connect();
 //启用cookie parser，并设置签名密钥
 let cookiesigned = 'h51804.app.com';
 server.use(cookieParser(cookiesigned));
@@ -96,7 +96,7 @@ server.post('/upload', upload.array('editimages'), (req, res) => {
 
 
 //客户端路由
-
+server.use('/', require('./module/index')());
 
 
 

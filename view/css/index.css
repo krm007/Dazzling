@@ -1,0 +1,32 @@
+   /* body{
+            font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+        } */
+
+        * {
+            margin: 0;
+            padding: 0
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        .nav_1{
+            margin-top: 20px;
+            border: #000 1px solid; 
+        }
+        .nav_1 p {
+            color: rgb(247, 80, 98);
+            font-size: 25px;
+        }
+
+       .right{
+           height: 50px;
+           text-align: right;
+           line-height: 50px;
+       }
+       .left{
+           height: 50px;
+           text-align: left;
+           line-height: 50px;
+       }
