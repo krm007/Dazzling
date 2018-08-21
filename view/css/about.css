@@ -36,73 +36,20 @@ box-shadow: 0 2px 6px 0 rgba(0,0,0,0.04);
   }
   /* 以上是顶部导航的样式 */
 
-  .el-footer{
-     background-color: #e5e9f2;
-     height: 150px !important;
-  }
 
-  .footer{
-      /* background-color: pink; */
-      padding-top: 20px
-  }
-  .footer li{
-      list-style: none;
-      line-height: 28px !important;
-      text-align: center
-  }
-  .footer div{
-      text-align: center
-  }
-  .footermsg{
-     background-color: #e5e9f2;
-         height: 100px;
-      width: 100px;
-  }
-  .footpic{
-      width: 60px;
-      height: 60px;
-     
-  }
-  .masked{
-      font-size: 20px !important;
-      line-height: 26px !important
-  }
-  @media all and (-webkit-min-device-pixel-ratio:0) and (min-resolution: .001dpcm) { 
-    .masked{
-        background-image: -webkit-linear-gradient(left,#FF8C69, #E6D205 25%, #FFBBFF 50%, #E6D205 75%, #FF8C69);
-        -webkit-text-fill-color: transparent;
-        -webkit-background-clip: text;
-        -webkit-background-size: 200% 100%;
-        -webkit-animation: masked-animation 4s infinite linear;
-    }
-}
-@-webkit-keyframes masked-animation {
-    0%  { background-position: 0 0;}
-    100% { background-position: -100% 0;}
-}
-  .leftmsg{
-      font-size: 20px;
-      color: antiquewhite
-  }
-  .bottom{
-      line-height: 20px;
-      text-align: center;
-      padding-top: 15px
-  }
-  .footerlast{
-      height: 100px !important;
-      font-size: 10px;
-  }
-  .footerlast a{
-      color: #333
-  }
 .el-main {
 background-color: #E9EEF3;
 color: #333;
 text-align: center;
 line-height: 160px;
 }
-
+.mytitle {
+    font-size: 18px;
+    font-weight: 500;
+    color: #f75062;
+    margin-top: 10px;
+    text-align: left !important
+}
 .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;

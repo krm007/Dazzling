@@ -8,7 +8,9 @@
     <title>Document</title>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="/js/about.js"></script>
 </head>
 
 <body>
@@ -30,27 +32,27 @@
                             </a>
                         </div>
                     </el-col>
-                    <el-col :sm="2" :xs="4">
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
                             <a href="#">首页</a>
                         </div>
                     </el-col>
-                    <el-col :sm="2" :xs="4">
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
                             <a href="#">精选</a>
                         </div>
                     </el-col>
-                    <el-col :sm="2" :xs="4">
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
                             <a href="#">关于我们</a>
                         </div>
                     </el-col>
-                    <el-col :sm="2" :xs="4">
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
                             <a href="#">招商</a>
                         </div>
                     </el-col>
-                    <el-col :sm="2" :xs="4">
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
                             <a href="#">个人中心</a>
                         </div>
@@ -69,97 +71,4 @@
 
             </el-main>
             <!-- 以上是中间内容部分 -->
-            <el-footer>
-                <el-row :gutter="20">
-                    <!-- 底部左侧内容 -->
-                    <el-col :span="6" :offset="3">
-                        <div class="grid-content bg-purple footer">
-                            <div > <img src="./image/logo.png" alt="" class="footpic"></div>
-                            <div class="masked">Dazzling让你更美丽~~</div>
-                        </div>
-                    </el-col>
-
-                    <!-- 底部右侧内容 -->
-                    <el-col :span="4">
-                        <div class="grid-content bg-purple footer">
-                            <ul>
-                                <li><a><h4><i class="el-icon-document"></i>公司相关</a></h4></li>
-                                <li><a>加入我们</a></li>
-                                <li><a>招商合作</a></li>
-                                <li><a>关于我们</a></li>
-                            </ul>
-                        </div>
-                    </el-col>
-                    <el-col :span="4">
-                            <div class="grid-content bg-purple footer">
-                                        <ul>
-                                            <li><a><h4><i class="el-icon-view"></i>内容相关</a></h4></li>
-                                            <li><a>社区精选</a></li>
-                                            <li><a>媒体报道</a></li>
-                                        </ul>
-                            </div>
-                        </el-col>
-                        <el-col :span="4">
-                                <div class="grid-content bg-purple footer">
-                                        <ul>
-                                                <li><a><h4><i class="el-icon-tickets"></i>协议条款</a></h4></li>
-                                                <li><a>注册协议</a></li>
-                                                <li><a>隐私协议</a></li>
-                                        </ul>
-                                </div>
-                            </el-col>
-                </el-row>
-               
-            </el-footer>
-            <hr>
-                <el-footer class="footerlast">
-                    <el-row>
-                        <el-col :sm="16" :xs="16" :offset="4" class="bottom">
-                        <div>
-                            <a href="#">蓉ICP备13030189号Copyright<span>&copy;</span>美美哒集团（四川）有限公司</a>
-                            <span>|地址：四川省成都市天府五街125号B座</span>
-                            <span>|电话：028-61303585</span>
-                        </div>
-                        <div>
-                                <a href="#">成都市互联网举报中心</a>
-                                <span>|蓉网文[2018] 4086-308号</span>
-                                <span>|增值电信业务经营许可证：蓉B2-20150021</span>
-                            </div>
-                            <div>
-
-                                    <span>2018蓉公安备301010300000888888</span>
-                                    <span>|违法不良信息举报电话：028-61303585</span>
-                                </div>
-                        </el-col>
-                    </el-row>
-                </el-footer>
-                
-        </el-container>
-    </div>
-
-
-    <script src="http://unpkg.com/vue/dist/vue.js"></script>
-    <script src="http://unpkg.com/element-ui@2.4.6/lib/index.js"></script>
-    <script>
-        new Vue({
-            el: '#app',
-            data: {
-                my: {
-                    mytitle: true
-                }
-            }
-
-        })
-    </script>
-    <style>
-        .mytitle {
-            font-size: 18px;
-            font-weight: 500;
-            color: #f75062;
-            margin-top: 10px;
-            text-align: left !important
-        }
-    </style>
-</body>
-
-</html>
+<%include footer.html%>
