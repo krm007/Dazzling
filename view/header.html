@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/footer.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/display.css">
+    <link rel="stylesheet" href="/css/personal.css">
     <script src="/js/about.js"></script>
 </head>
 
@@ -29,7 +30,7 @@
                     <el-col :sm="2" :xs="4">
                         <div class="grid-content bg-purple ">
                             <a href="/">
-                                <span v-bind:class="my">Dazzling</span>
+                                <span v-bind:class="mytitle">Dazzling</span>
                             </a>
                         </div>
                     </el-col>
@@ -55,7 +56,7 @@
                     </el-col>
                     <el-col :sm="2" :xs="4"  class="hidden-xs-only">
                         <div class="grid-content bg-purple">
-                            <a href="#">个人中心</a>
+                            <a href="/personal">个人中心</a>
                         </div>
                     </el-col>
                 </el-row>
