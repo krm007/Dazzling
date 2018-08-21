@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="./css/about.css">
+    <link rel="stylesheet" href="./css/footer.css">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="/js/about.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-container>
+            <el-header>
+                <el-row :gutter="2">
+                    <el-col :sm="2" :xs="4" :offset="2">
+                        <div class="grid-content bg-purple ">
+                            <a href="#">
+                                <img src="./image/logo.png" alt="" class="pic">
+                            </a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4">
+                        <div class="grid-content bg-purple ">
+                            <a href="#">
+                                <span v-bind:class="my">Dazzling</span>
+                            </a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
+                        <div class="grid-content bg-purple">
+                            <a href="#">首页</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
+                        <div class="grid-content bg-purple">
+                            <a href="#">精选</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
+                        <div class="grid-content bg-purple">
+                            <a href="#">关于我们</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
+                        <div class="grid-content bg-purple">
+                            <a href="#">招商</a>
+                        </div>
+                    </el-col>
+                    <el-col :sm="2" :xs="4"  class="hidden-xs-only">
+                        <div class="grid-content bg-purple">
+                            <a href="#">个人中心</a>
+                        </div>
+                    </el-col>
+                </el-row>
+            </el-header>
