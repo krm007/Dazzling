@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/display.css">
     <link rel="stylesheet" href="/css/index.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                             <el-col :span="16">
                                     <el-row :gutter="5">
                                         <el-col :span="4" :sm="4" :xs="24" :offset="4">
-                                            <div class="left"><a href="#">首页</a></div>
+                                            <div class="left"><a href="/">首页</a></div>
                                         </el-col>
                                         <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
                                             <div class="left"><a href="#">社区精选</a></div>
@@ -108,22 +109,22 @@
                
             </div>
         </section>
-        <footer>这是底部区域</footer>
-    </div>
-    <!--引入vue库-->
+        <!-- 这是底部区域 -->
+        <%include footer.html%>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    right_img:"<img src='/image/first_1.png' alt='图片'>"
+                },
+                methods:{
+                    
+                }
+            })
+        </script>
+
+    <!-- </div>
     <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
     <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                right_img:"<img src='/image/first_1.png' alt='图片'>"
-            },
-            methods:{
-                
-            }
-        })
-    </script>
 </body>
-
-</html>
+</html> -->
