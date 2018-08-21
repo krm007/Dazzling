@@ -29,7 +29,7 @@
                                     </el-col>
                                     <el-col :span="10" :sm="10" :xs="24" class="hidden-xs-only">
                                         <div class="left">
-                                            <p>美美哒</p>
+                                            <p>Dazzling</p>
                                         </div>
                                     </el-col>
                                 </el-row>
@@ -69,13 +69,44 @@
         </header>
 
         <section>
-            <div>第一部分
+            <!-- 第一部分 -->
+            <div>
                     <el-row :gutter="5">
-                        <el-col :span="20" :offset="2"></el-col>
+                        <el-col :span="20" :sm="20" :xs="2" :offset="2">
+                            <div class="sec_1">
+                                <div class="sec_1_left hidden-xs-only">
+                                    <p>美美哒</p><br>
+                                    <p>要美，就上美美哒~</p>
+                                    <p>Welcome to a page for beauty bloggers</p><br><br><br>
+                                    <el-button type="info" >微信小程序</el-button>
+                                    <el-button type="info">手机app</el-button>                                   
+                                </div>
+                                <div class="sec_1_right" v-html="right_img"></div>                                
+                            </div>
+                        </el-col>
                     </el-row>
             </div>
-            <div>第二部分</div>
-            <div>第三部分</div>
+            <!-- 第二部分 -->
+            <div class="sec_2">
+                <el-row :gutter="5">
+                    <el-col :span="14" :sm="14" :offset="2" class="hidden-xs-only">
+                            <video height="450px" controls="controls" autoplay="autoplay">
+                                <source src="./texie.mp4" type="video/mp4">                        
+                            </video>
+                    </el-col>
+                    <el-col :span="6" :sm="6" :xs="24" >
+                            <div class="sec_2_right">
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在人生岁月中，了然于心的情怀，其实一直都在心底；</p><br>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然总有些错过，有些遗憾，毕竟已在岁月的长河中得到释疑和诠注。也因为爱和宽容，竟也出落得错落有致，在素色年华里，虽然会有孤独，却也不乏美丽。</p><br>
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，流年似水，总有一些记忆会愈久弥新，也总有一些记忆，会在不经意间消逝...</p>
+                            </div>
+                    </el-col>
+                </el-row>        
+            </div>
+            <!-- 第三部分 -->
+            <div class="sec_3">
+               
+            </div>
         </section>
         <footer>这是底部区域</footer>
     </div>
@@ -86,7 +117,7 @@
         new Vue({
             el: "#app",
             data: {
-
+                right_img:"<img src='/image/first_1.png' alt='图片'>"
             },
             methods:{
                 
