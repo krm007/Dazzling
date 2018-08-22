@@ -52,10 +52,26 @@
                     </div>
                 </el-tab-pane>
 
-                <el-tab-pane label="修改密码">修改密码</el-tab-pane>
+                <el-tab-pane label="修改密码">
+                    <h3>修改密码</h3>
+                    <el-form :model="pwForm" :rules="rules" ref="pwForm" label-width="100px" class="demo-ruleForm">
+                        <el-form-item label="原始密码" prop="passwd">
+                            <el-input v-model="pwForm.passwd"></el-input>
+                        </el-form-item>
+                        <el-form-item label="新密码" prop="passwd1">
+                            <el-input type="password" v-model="pwForm.passwd1"></el-input>
+                        </el-form-item>
+                        <el-form-item label="确认新密码" prop="passwd2">
+                            <el-input type="password" v-model="pwForm.passwd2"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="updatepw('pwForm')">确定</el-button>
+                        </el-form-item>
+                    </el-form>
+                </el-tab-pane>
 
                 <el-tab-pane label="退出登录">
-                    <el-button type="text" @click="dialogVisible = true">点击退出登录</el-button>
+                    <el-button type="text" @click="dialogVisible = true"><h2>点击退出登录</h2></el-button>
 
                     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
                         <span>是否确认退出登录？</span>
@@ -64,11 +80,8 @@
                             <el-button type="primary" @click="logout">确 定</el-button>
                         </span>
                     </el-dialog>
-
-                    <!-- <a href="/personal/logout">
-                        <h2>点我退出登录</h2>
-                    </a> -->
                 </el-tab-pane>
+
                 <el-tab-pane label="我的发布">我的发布</el-tab-pane>
                 <el-tab-pane label="消息中心">消息中心</el-tab-pane>
             </el-tabs>
@@ -85,9 +98,28 @@
         data: {
             tabPosition: 'top',
             dialogImageUrl: 'http://localhost:81/uploads/2018/08/1534923654928_019661.jpeg',
-            dialogVisible: false
+            dialogVisible: false,
             // headerpath:''
             // dialogVisible: false
+            pwForm:{
+                passwd:'',
+                passwd1:'',
+                passwd2:''
+            },
+            rules:{
+                passwd: [
+                    { required: true, message: '请输入原始密码', trigger: 'blur' },
+                    { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
+                ],
+                passwd1: [
+                    { required: true, message: '请输入新密码', trigger: 'blur' },
+                    { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
+                ],
+                passwd2: [
+                    { required: true, message: '请确认新密码', trigger: 'blur' },
+                    { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
+                ]
+            }
         },
         methods: {
             handleRemove(file, fileList) {
@@ -99,6 +131,7 @@
             },
             // 文件上传成功时的钩子
             uploadSuccess(response, file, fileList) {
+                // console.log(response, file, fileList);
                 console.log(response.data[0]);
                 this.dialogImageUrl = response.data[0];
             },
@@ -121,6 +154,22 @@
                         done();
                     })
                     .catch(_ => { });
+            },
+            //修改新密码并提交数据
+            updatepw(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        axios.post("./changepw", Qs.stringify(this.pwForm)).then(response => {
+                            console.log("success...");
+                            window.location.href = "/personal/login";//跳转到登录页面
+                        }).catch(response => {
+                            console.log("error...")
+                        })
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
             }
 
         }

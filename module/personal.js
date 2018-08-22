@@ -117,7 +117,49 @@ module.exports = function () {
     });
 
 
+    //修改密码操作
+    router.post('/changepw', (req, res) => {
+        //接收post过来的数据
+        let oldpw = req.body.passwd;
+        let passwd = req.body.passwd1;
+        //验证历史密码是不是正确
+       
+        let sql = 'SELECT passwd FROM user WHERE uid = ?';
+        mydb.query(sql, req.session.uid, (err, data) => {
+            if (err) {
+                //数据库操作错误
+                console.log(err);
+                res.json({
+                    r: 'db_err'
+                });
+                return;
+            }
+            //验证原始密码是不是正确
+            if (md5(oldpw) != data[0].passwd) {
+                //原始密码错误
+                res.json({
+                    r: 'oldpw_err'
+                });
+                return;
+            }
+            console.log(12345);
+            //更新新密码到数据库
+            let upsql = 'UPDATE user SET passwd = ? WHERE uid = ? LIMIT 1';
+            mydb.query(upsql, [md5(passwd), req.session.uid], (err, data) => {
+                if (err) {
+                    res.json({
+                        r: 'update_db_err'
+                    });
+                    return;
+                }
+                res.json({
+                    r: 'ok'
+                });
+            });
+        });
+    })
     
+
     //处理退出登录操作
     router.get('/logout', (req, res) => {
         //清除session信息
