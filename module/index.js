@@ -17,7 +17,7 @@ res.render('business')
 router.get('/perfect',(req,res)=>{
 res.render('perfect');
 });
-=======
+
     //关于我们
     router.get('/about', (req, res) => {
         res.render('about')
