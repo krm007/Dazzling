@@ -1,26 +1,144 @@
 <%include header.html%>
 
-<el-row class="pcontent">
-        <el-col :xs="2" :sm="2" :offset="2"><div class="pchild"><a href="##">美睫</a></div></el-col>
-        <el-col :xs="2" :sm="2" ><div class="pchild"><a href="##">眼线</a></div></el-col>
-        <el-col :xs="2" :sm="2" ><div class="pchild"><a href="##">眉毛</a></div></el-col>
-        <el-col :xs="2" :sm="2" ><div class="pchild"><a href="##">眼影</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">遮瑕</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">高光</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">垫鼻</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">美牙</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">腮红</a></div></el-col>
-        <el-col :xs="2" :sm="2" class="hidden-xs-only"><div class="pchild"><a href="##">防晒</a></div></el-col>
-        <div class="">
-
-        </div>
+        <el-row class="pcontent">
+                <el-col :xs="2" :sm="2" :offset="2">
+                        <div class="pchild">
+                                <a href="##">推荐</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2">
+                        <div class="pchild">
+                                <a href="##">眼线</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2">
+                        <div class="pchild">
+                                <a href="##">眉毛</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2">
+                        <div class="pchild">
+                                <a href="##">眼影</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">遮瑕</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">口红</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">垫鼻</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">美牙</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">腮红</a>
+                        </div>
+                </el-col>
+                <el-col :xs="2" :sm="2" class="hidden-xs-only">
+                        <div class="pchild">
+                                <a href="##">防晒</a>
+                        </div>
+                </el-col>
         </el-row>
-     
-      
-<%include footer.html%>
+        <el-row>
+                <div class="waterfull">
+                        <h3 class="myhtitle">热门推荐</h3>
+                        <el-col :span="5" v-for="item in imgurls">
+                                <el-card :body-style="{ padding: '10px' }" class="cardstyle box">
+                                        <img :src="item.url" class="image">
+                                        <div style="padding: 14px;" class="pdesc">
+                                                <h5>好吃的汉堡</h5>
+                                                <p>这是描述部分。。。。。。。。</p>
+                                                <div class="bottom clearfix">
+                                                        <time class="time">{{ currentDate }}</time>
+                                                        <el-button type="text" class="button">收藏</el-button>
+                                                </div>
+                                        </div>
+                                </el-card>
+                        </el-col>
+                </div>
+        </el-row>
 
-<script>
-        new Vue({
-           el: '#app'
-       })
-   </script>
+        <el-row>
+                <div class="waterfull">
+                        <h3 class="myhtitle">人气精选</h3>
+                        <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1">
+                                <img src="./image/lunbo3.jpg" alt="" class="hotpic">
+                        </el-col>
+                        <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" :offset="1">
+                                <div>
+                                        <h4>分类</h4>
+                                        <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                </div>
+
+                        </el-col>
+                        <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" >
+                                        <div>
+                                                <h4>分类</h4>
+                                                <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                        </div>
+        
+                                </el-col>
+                        <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1" :offset="1">
+                                        <img src="./image/lunbo3.jpg" alt="" class="hotpic">
+                                </el-col>
+                               
+                </div>
+              
+        
+
+        </el-row>
+        <el-row>
+                        <div class="waterfull">
+                          
+                                <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1">
+                                        <img src="./image/lunbo3.jpg" alt="" class="hotpic">
+                                </el-col>
+                                <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" :offset="1">
+                                        <div>
+                                                <h4>分类</h4>
+                                                <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                        </div>
+        
+                                </el-col>
+                                <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" >
+                                                <div>
+                                                        <h4>分类</h4>
+                                                        <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                                </div>
+                
+                                        </el-col>
+                                <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1" :offset="1">
+                                                <img src="./image/lunbo3.jpg" alt="" class="hotpic">
+                                        </el-col>
+                                       
+                        </div>
+                      
+                
+        
+                </el-row>
+
+        <%include footer.html%>
+
+                <script>
+                        new Vue({
+                                el: '#app',
+                                data: {
+                                        currentDate: new Date(),
+                                        imgurls: [{ url: "./image/lunbo2.jpg" }, { url: "./image/lunbo1.jpg" }, { url: "./image/lunbo4.jpg" }, { url: "./image/lunbo5.jpg" }, { url: "./image/lunbo1.jpg" }, { url: "./image/lunbo1.jpg" }, { url: "./image/lunbo2.jpg" }, { url: "./image/lunbo4.jpg" }, { url: "./image/lunbo2.jpg" }, { url: "./image/lunbo3.jpg" }, { url: "./image/lunbo4.jpg" }, { url: "./image/lunbo5.jpg" }],
+
+                                }
+                        })
+                </script>

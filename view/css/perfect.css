@@ -1,9 +1,7 @@
 .pcontent{
-margin-top: 20px;
 border-bottom: 1px solid gray;
-margin-bottom: 20px;
 width: 100%;
-height: 1000px;
+height: 50px;
 background-color:peachpuff;
 }
 .pchild{
@@ -15,3 +13,99 @@ background-color:peachpuff;
     font-size: 14px
 }
 
+/* 以下是瀑布流样式 */
+.time {
+    font-size: 13px;
+    color: #999;
+  }
+  
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width: 100%;
+    display: block;
+    height: 200px
+  }
+.box img:hover{
+    transform: scale(1.1);
+    transition: 1s
+}
+.pdesc h5{
+text-align: center
+}
+.pdesc p{
+    color: plum;
+    font-size: 14px
+}
+.pdesc :hover{
+cursor: pointer;
+}
+  .clearfix:before,
+  .clearfix:after {
+      display: table;
+      content: "";
+  }
+  
+  .clearfix:after {
+      clear: both
+  }
+.cardstyle{
+    margin: 10px
+}
+.cardstyle :hover{
+    background-color: rgba(0, 0, 255, 0.048);
+    transform: scale(1.1);
+}
+.waterfull{
+    position: relative;
+    margin-left: 15%;
+    bottom: 20px
+}
+.myhtitle{
+    color: palevioletred;
+    margin: 20px auto
+}
+.box{
+    float: left;
+}
+.hotdiv1{
+    width: 100%;
+    height: 400px;
+    line-height: 400px;
+    padding: 20px;
+    border: 1px solid gainsboro;
+    /* margin-top: 1px; */
+    /* background-color: paleturquoise; */
+    overflow: hidden;
+}
+.hotdiv2{
+    width: 100%;
+    height: 400px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hotdiv2 div{
+    margin-top: 40%;
+    width: 100%;
+    height: 50%;
+    line-height: 40px;
+    background-color: rgba(255, 0, 221, 0);
+    border-radius: 15px;
+}
+.hotdiv2 p{
+    /* color:palegoldenrod; */
+    font-size: 16px
+}
+.hotpic{
+    width: 100%;
+    height: 100%
+}
