@@ -1,0 +1,17 @@
+.pcontent{
+margin-top: 20px;
+border-bottom: 1px solid gray;
+margin-bottom: 20px;
+width: 100%;
+height: 1000px;
+background-color:peachpuff;
+}
+.pchild{
+    height: 40px;
+    line-height: 40px;
+}
+.pchild a{
+    color: #000;
+    font-size: 14px
+}
+
