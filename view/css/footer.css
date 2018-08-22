@@ -3,7 +3,9 @@
     height: 150px !important;
     color: gray;
  }
-
+a{
+    text-decoration: none
+}
  .footer{
      padding-top: 20px
  }
