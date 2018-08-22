@@ -1,7 +1,7 @@
 .el-footer{
-    background-color: gray;
+    background-color: white;
     height: 150px !important;
-    color: white
+    color: gray;
  }
 
  .footer{
@@ -56,5 +56,5 @@
      font-size: 10px;
  }
  .footerlast a{
-     color: white
+    color: gray;
  }

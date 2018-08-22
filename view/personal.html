@@ -1,9 +1,9 @@
 <% include header.html%>
 
     <div class="cen_1">
-        <button @click="getreg">注册</button>
+        <button type="button" @click="getreg">注册</button>
         <button @click="getlogin">登录</button>
-        <button @click="updatepesonal">修改个人资料</button>
+        <button @click="updatepesonal">个人资料</button>
         
     </div>
     <div class="cen_2">
@@ -15,6 +15,8 @@
     </div>
 <%include footer.html%>
 <script>
+
+    console.log(123)
     new Vue({
         el: "#app",
         data: {
@@ -22,10 +24,11 @@
         },
         methods:{
             getreg:function(){
-                window.location.href="";
+                console.log(123);
+                window.location.href="/personal/reg";
             },
             getlogin:function(){
-                window.location.href="";
+                window.location.href="/personal/login";
             },
             updatepesonal:function(){
                 window.location.href="";

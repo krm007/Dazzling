@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+#app{
+    width: 100%;
+    height: 750px;
+    background-image: url(/image/lobg.jpg);
+    background-size: cover;
+    position: relative;
+    top: 0;
+    text-align: left;
+
+}
+.login_div{
+    width: 30%;
+    position: absolute;
+    background-color: rgba(255, 245, 255, 0);
+    top: 150px;
+    right:150px;
+}
+.login_div h1{
+    margin-left: 100px;
+    color: rgb(144, 147, 153);
+}

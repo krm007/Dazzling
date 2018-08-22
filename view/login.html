@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <div id="app">
+        <div class="login_div">
+            <h1>用户登录</h1><br><br>
+            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+                <el-form-item label="账号" prop="username">
+                    <el-input v-model="ruleForm.username"></el-input>
+                </el-form-item>
+                <el-form-item label="密码" prop="passwd">
+                    <el-input type="password" v-model="ruleForm.passwd"></el-input>
+                </el-form-item>
+                <el-form-item label="验证码" prop="coder">
+                    <el-input type="text" v-model="ruleForm.coder" ></el-input><br><br>
+                    <img :src="src" alt="验证码" class="codeimg" @click="getimgcode">
+                </el-form-item>
+
+                <el-form-item>
+                    <el-button type="primary" @click="loginsubmit('ruleForm')">登录</el-button>
+                </el-form-item>
+            </el-form>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+</body>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            src:"/personal/coderimg",
+            ruleForm: {
+                username: '',
+                passwd: '',
+                coder: '',
+            },
+            rules: {
+                username: [
+                    { required: true, message: '请输入账户名', trigger: 'blur' },
+                    { min: 2, max: 12, message: '长度在 2 到 12 个字符', trigger: 'blur' }
+                ],
+                passwd: [
+                    { required: true, message: '请输入密码', trigger: 'blur' },
+                    { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
+                ],
+                coder: [
+                    { required: true, message: '请确认验证码', trigger: 'blur' },
+                ]
+            }
+        },
+        methods: {
+            //处理验证码
+            getimgcode: function () {
+                this.src='/personal/coderimg?' + new Date();
+            },
+            //post提交数据
+            loginsubmit(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        axios.post("./login", Qs.stringify(this.ruleForm)).then(response => {
+                            console.log("success...");
+                            window.location.href = "/personal";//跳转到个人中心
+                        }).catch(response => {
+                            console.log("error...")
+                        })
+                    } else {
+                        console.log('error submit!!');
+                        return false;
+                    }
+                });
+            }
+        }
+
+    })
+</script>
+
+</html>
