@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改个人信息</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-breadcrumb separator-class="el-icon-arrow-right">
+            <!-- :to="{ path: '/' }" -->
+            <el-breadcrumb-item>
+                <a href="/">首页</a>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>
+                <a href="/personal">个人中心</a>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>
+                <a href="/personal/user">个人资料</a>
+            </el-breadcrumb-item>
+        </el-breadcrumb>
+        <hr>
+        <h1>欢迎xxx来到个人信息中心</h1>
+        <template>
+            <el-radio-group v-bind="tabPosition" style="margin-bottom: 30px;">
+                <!-- <el-radio-button label="top">top</el-radio-button>
+                  <el-radio-button label="right">right</el-radio-button>
+                  <el-radio-button label="bottom">bottom</el-radio-button>
+                  <el-radio-button label="left">left</el-radio-button> -->
+            </el-radio-group>
+
+            <el-tabs :tab-position="tabPosition" style="height: 200px;">
+                <el-tab-pane label="上传头像">
+                    <h2>点击下方上传个人头像</h2>
+                    <div>
+                        <el-upload class="avatar-uploader" action="/upload" name="editimages" list-type="picture-card" :on-preview="handlePictureCardPreview"
+                            :on-remove="handleRemove" :on-success="uploadSuccess" :show-file-list="false">
+                            <img v-if="dialogImageUrl" :src="dialogImageUrl" class="avatar">
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                        <!-- <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt="头像">
+                        </el-dialog> -->
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        <br>
+                        <el-button type="primary" @click="saveheader">保存</el-button>
+                    </div>
+                </el-tab-pane>
+
+                <el-tab-pane label="修改密码">修改密码</el-tab-pane>
+
+                <el-tab-pane label="退出登录">
+                    <el-button type="text" @click="dialogVisible = true">点击退出登录</el-button>
+
+                    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+                        <span>是否确认退出登录？</span>
+                        <span slot="footer" class="dialog-footer">
+                            <el-button @click="dialogVisible = false">取 消</el-button>
+                            <el-button type="primary" @click="logout">确 定</el-button>
+                        </span>
+                    </el-dialog>
+
+                    <!-- <a href="/personal/logout">
+                        <h2>点我退出登录</h2>
+                    </a> -->
+                </el-tab-pane>
+                <el-tab-pane label="我的发布">我的发布</el-tab-pane>
+                <el-tab-pane label="消息中心">消息中心</el-tab-pane>
+            </el-tabs>
+        </template>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            tabPosition: 'top',
+            dialogImageUrl: 'http://localhost:81/uploads/2018/08/1534923654928_019661.jpeg',
+            dialogVisible: false
+            // headerpath:''
+            // dialogVisible: false
+        },
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            // 文件上传成功时的钩子
+            uploadSuccess(response, file, fileList) {
+                console.log(response.data[0]);
+                this.dialogImageUrl = response.data[0];
+            },
+            //点击保存到数据库
+            saveheader: function () {
+                let This = this;
+                axios.post("/personal/saveheader", Qs.stringify({ header: This.dialogImageUrl })).then(response => {
+                    console.log("success...");
+                }).catch(response => {
+                    console.log("error...");
+                })
+            },
+            //确认退出登录
+            logout: function () {
+                window.location.href = "/personal/logout";
+            },
+            handleClose(done) {
+                this.$confirm('确认关闭？')
+                    .then(_ => {
+                        done();
+                    })
+                    .catch(_ => { });
+            }
+
+        }
+
+    })
+</script>
+
+</html>
