@@ -23,8 +23,8 @@
                                 <el-step title="2018" description="用户突破7000万"></el-step>
                               </el-steps>
                               <div>
-                                  <img src="./image/right.png" alt="" style="    width: 600px;
-                                  height: 600px;
+                                  <img src="./image/new.jpg" alt="" style="    width: 500px;
+                                  height: 750px;
                                   margin-top: -501px;
                                   margin-right: -400px;">
                               </div>
@@ -32,3 +32,21 @@
             </el-main>
             <!-- 以上是中间内容部分 -->
 <%include footer.html%>
+<script>
+     new Vue({
+        el: '#app',
+        data: {
+            my: {
+                mytitle: true
+            },
+            active: 0,
+            imgurls: [{ url: "./image/lunbo1.jpg" }, { url: "./image/lunbo2.jpg" }, { url: "./image/lunbo3.jpg" }, { url: "./image/lunbo4.jpg" }, { url: "./image/lunbo5.jpg" }]
+        },
+    
+        methods: {
+            next() {
+                if (this.active++ > 2) this.active = 0;
+            }
+        }
+    })
+</script>
