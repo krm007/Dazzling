@@ -28,3 +28,11 @@ html{
     margin-left:100px;
     color: rgb(144, 147, 153);
 }
+.bigdiv_1 p{
+    margin-left:100px;
+    color: rgb(144, 147, 153);
+}
+.bigdiv_1 p>a{
+    color: rgb(64, 158, 255);
+    text-decoration: none;
+}

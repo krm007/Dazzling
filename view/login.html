@@ -13,7 +13,8 @@
 <body>
     <div id="app">
         <div class="login_div">
-            <h1>用户登录</h1><br><br>
+            <h1>用户登录</h1><br>
+            <p>没有账号，请先<a href="/personal/reg">注册</a></p><br>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                 <el-form-item label="账号" prop="username">
                     <el-input v-model="ruleForm.username"></el-input>

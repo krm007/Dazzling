@@ -27,3 +27,11 @@ html{
     margin-left: 100px;
     color: rgb(144, 147, 153);
 }
+.login_div p{
+    margin-left: 100px;
+    color: rgb(144, 147, 153);
+}
+.login_div p>a{
+    color: rgb(64, 158, 255);
+    text-decoration: none;
+}

@@ -23,3 +23,41 @@
     display: block;
   }
   /* 上传头像end */
+  /* 我的发布start */
+  /* .mypost{
+    width: 90%;
+    height: 200px;
+    border-color: red;
+  } */
+  .time {
+    font-size: 13px;
+    color: #999;
+  }
+  
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width:150px;
+    height:100px;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+      display: table;
+      content: "";
+  }
+  
+  .clearfix:after {
+      clear: both
+  }
+  /* 我的发布end */
+  

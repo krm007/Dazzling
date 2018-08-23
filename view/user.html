@@ -71,7 +71,9 @@
                 </el-tab-pane>
 
                 <el-tab-pane label="退出登录">
-                    <el-button type="text" @click="dialogVisible = true"><h2>点击退出登录</h2></el-button>
+                    <el-button type="text" @click="dialogVisible = true">
+                        <h2>点击退出登录</h2>
+                    </el-button>
 
                     <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
                         <span>是否确认退出登录？</span>
@@ -82,7 +84,25 @@
                     </el-dialog>
                 </el-tab-pane>
 
-                <el-tab-pane label="我的发布">我的发布</el-tab-pane>
+                <el-tab-pane label="我的发布">
+
+                    <el-row>
+                        <el-col :span="20" :offset="2">
+                            <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                                <img :src="imglist" class="image">
+                                <div style="padding: 14px;">
+                                    <span>这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容
+                                        这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容这是我发布的内容</span>
+                                    <div class="bottom clearfix">
+                                        <time class="time">{{ currentDate }}</time>
+                                        <el-button type="text" class="button">收藏/评论/点赞</el-button>
+                                    </div>
+                                </div>
+                            </el-card>
+                        </el-col>
+                    </el-row>
+
+                </el-tab-pane>
                 <el-tab-pane label="消息中心">消息中心</el-tab-pane>
             </el-tabs>
         </template>
@@ -101,12 +121,12 @@
             dialogVisible: false,
             // headerpath:''
             // dialogVisible: false
-            pwForm:{
-                passwd:'',
-                passwd1:'',
-                passwd2:''
+            pwForm: {
+                passwd: '',
+                passwd1: '',
+                passwd2: ''
             },
-            rules:{
+            rules: {
                 passwd: [
                     { required: true, message: '请输入原始密码', trigger: 'blur' },
                     { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
@@ -119,7 +139,9 @@
                     { required: true, message: '请确认新密码', trigger: 'blur' },
                     { min: 6, max: 16, message: '长度在 6 到 16 个字符', trigger: 'blur' }
                 ]
-            }
+            },
+            currentDate: new Date(),
+            imglist:"/image/first_1.png"
         },
         methods: {
             handleRemove(file, fileList) {
@@ -135,7 +157,7 @@
                 console.log(response.data[0]);
                 this.dialogImageUrl = response.data[0];
             },
-            //点击保存到数据库
+            //点击保存头像到数据库
             saveheader: function () {
                 let This = this;
                 axios.post("/personal/saveheader", Qs.stringify({ header: This.dialogImageUrl })).then(response => {
