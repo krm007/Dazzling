@@ -13,8 +13,12 @@
 <body>
     <div id="app">
         <div class="login_div">
-            <h1>用户登录</h1><br>
-            <p>没有账号，请先<a href="/personal/reg">注册</a></p><br>
+            <h1>用户登录</h1>
+            <br>
+            <p>没有账号，请先
+                <a href="/personal/reg">注册</a>
+            </p>
+            <br>
             <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
                 <el-form-item label="账号" prop="username">
                     <el-input v-model="ruleForm.username"></el-input>
@@ -23,7 +27,9 @@
                     <el-input type="password" v-model="ruleForm.passwd"></el-input>
                 </el-form-item>
                 <el-form-item label="验证码" prop="coder">
-                    <el-input type="text" v-model="ruleForm.coder" ></el-input><br><br>
+                    <el-input type="text" v-model="ruleForm.coder"></el-input>
+                    <br>
+                    <br>
                     <img :src="src" alt="验证码" class="codeimg" @click="getimgcode">
                 </el-form-item>
 
@@ -43,7 +49,7 @@
     new Vue({
         el: '#app',
         data: {
-            src:"/personal/coderimg",
+            src: "/personal/coderimg",
             ruleForm: {
                 username: '',
                 passwd: '',
@@ -66,15 +72,28 @@
         methods: {
             //处理验证码
             getimgcode: function () {
-                this.src='/personal/coderimg?' + new Date();
+                this.src = '/personal/coderimg?' + new Date();
             },
             //post提交数据
             loginsubmit(formName) {
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         axios.post("./login", Qs.stringify(this.ruleForm)).then(response => {
-                            console.log("success...");
-                            window.location.href = "/personal";//跳转到个人中心
+                            console.log(response.data);
+                            // console.log(data.r);
+                            if (response.data.r == 'pw_err') {
+                                alert('密码错误');
+                            } else if(response.data.r == 'coder_err'){
+                                alert('验证码错误');
+                            }else if (response.data.r == 'not_exist') {
+                                alert('用户不存在');
+                            } else if (response.data.r == 'ok') {
+                                console.log('登录成功');
+                                window.location.href = "/personal";//跳转到个人中心
+                            } else {
+                                console.log('未知错误，请重新刷新操作');
+                            }
+
                         }).catch(response => {
                             console.log("error...")
                         })

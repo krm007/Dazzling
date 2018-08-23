@@ -94,10 +94,10 @@ module.exports = function () {
         res.status(200).send(captcha.data);
     })
 
-    //进到个人中心的前提是登录
+    //进到个人资料修改中心的前提是登录
     router.use((req, res, next) => {
         if (!req.session.uid) {
-            res.redirect('/personal/login');
+            res.redirect('/personal/login'); 
             return;
         }
         next();
