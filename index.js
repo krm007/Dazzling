@@ -95,6 +95,7 @@ server.post('/upload', upload.array('editimages'), (req, res) => {
 });
 
 
+
 //客户端路由
 server.use('/', require('./module/index')());
 //个人中心页面
