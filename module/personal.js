@@ -64,6 +64,7 @@ module.exports = function () {
                 return;
             }
             console.log(result[0].header);
+            console.log(result[0].uid);
             //登录成功后做什么事情
             req.session.uid = result[0].uid;
             req.session.username = result[0].username;
@@ -169,7 +170,7 @@ module.exports = function () {
     })
 
     router.get('/publish',(req,res)=>{
-        res.render('publish');
+        res.render('publish')
       });
       router.post('/publish',(req,res)=>{
         let p=req.body;

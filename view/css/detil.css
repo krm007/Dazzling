@@ -1,0 +1,24 @@
+.dcontainer{
+    margin: 20px 15%;
+    background-color: antiquewhite;
+    width: 70%;
+    /* height: 100px; */
+}
+.a1{
+    /* background-color: palegoldenrod; */
+    width: 55%;
+    height: 100%;
+    
+}
+.a2{
+    background-color: palegreen;
+    width: 44%;
+    height: 100%;
+    margin-left: 1%
+}
+.dleftpict{
+    width: 100%;
+    height: 300px;
+    padding: 20px;
+    background-color: rgba(192, 234, 241, 0.63);
+}

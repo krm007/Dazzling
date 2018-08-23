@@ -1,0 +1,34 @@
+<%include header.html%>
+<el-row>
+    <div class="waterfull">
+            <h3 class="myhtitle">热门推荐</h3>
+            <% for(let r of result){%>
+            
+                <el-col :span="5" >
+                    <el-card :body-style="{ padding: '10px' }" class="cardstyle box">
+                            <img src="<%=JSON.parse(r.imglist)[0]%>" class="image" @click="changepage">
+                            <div style="padding: 14px;" class="pdesc">
+                                    <h5><%=r.workname%></h5>
+                                    <p><%=r.description.substring(0,19 )%></p>
+                                    <div class="bottom clearfix">
+                                            <time class="time"><%=r.addtime.toLocaleString()%></time>
+                                            <el-button type="text" class="button">收藏</el-button>
+                                    </div>
+                            </div>
+                    </el-card>
+            </el-col>
+            <% }%>
+    </div>
+</el-row>
+<%include footer.html%>
+<script>
+    new Vue({
+         el: '#app',
+         methods:{
+            changepage:function(){
+                console.log('跳转到细节页面了');
+                window.location.href="/detil?pid="; 
+            }
+         }
+    })
+</script>
