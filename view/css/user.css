@@ -41,13 +41,14 @@
 
   .button {
     padding: 0;
-    float: right;
+    float: left;
   }
 
   .image {
     width:150px;
     height:100px;
-    display: block;
+    display:inline-block;
+    margin-left: 2px;
   }
 
   .clearfix:before,
