@@ -1,0 +1,43 @@
+.pubcontent{
+    margin:10px 20%;
+    width: 60%;
+    /* height: 1000px; */
+    background-color:palegoldenrod;
+    background: url(../image/people1.jpg) no-repeat ;
+    background-size: cover
+}
+.el-input__inner{
+width: 400px
+}
+.mypbutton{
+    margin-left: 30%
+}
+.myfirstform{
+    margin-top: 20px
+}
+.hide{
+    display: none
+}
+.avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 178px;
+    height: 178px;
+    line-height: 178px;
+    text-align: center;
+  }
+  .avatar {
+    width: 178px;
+    height: 178px;
+    display: block;
+  }
