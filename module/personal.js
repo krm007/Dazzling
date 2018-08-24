@@ -65,6 +65,7 @@ module.exports = function () {
                 return;
             }
             console.log(result[0].header);
+            console.log(result[0].uid);
             //登录成功后做什么事情
             req.session.uid = result[0].uid;
             req.session.username = result[0].username;
@@ -98,7 +99,7 @@ module.exports = function () {
     //进到个人资料修改中心的前提是登录
     router.use((req, res, next) => {
         if (!req.session.uid) {
-            res.redirect('/personal/login');
+            res.redirect('/personal/login'); 
             return;
         }
         next();
