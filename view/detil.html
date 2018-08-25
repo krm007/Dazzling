@@ -1,24 +1,266 @@
 <%include header.html%>
 
-<el-row>
-    <div  class="dcontainer">
-            <el-col  class="a1">
+    <el-row>
+        <div class="dcontainer">
+            <el-col :sm="12" :xs="24">
+            <el-col class="a1">
                 <div class="dleftpict">
-                       
+                    <template>
+                        <div class="block">
+                                
+                            <el-carousel height="450px">
+                                    <% for(let img of imglist){%>
+                                <el-carousel-item >
+                                    <img src="<%=img%>" height="450px">
+                                </el-carousel-item>
+                                <%}%>
+                            </el-carousel>
+                            
+                        </div>
+                    </template>
                 </div>
+                
+                <div class="dkey">
+                        <% for(let r of keywd){%>
+                    <el-tag type="success" class="mytag"><%=r%></el-tag>
+                          <%}%>
+                </div>
+                
+                <div class="fuwenben">
+                    <%-result.progress%>
+                </div>
+
+                <div class="time">
+                    <div>发布时间&nbsp;<span class="timefont"><%=result.addtime.toLocaleString()%></span></div>
+                    <div @click="like">
+                        <span>|</span> &nbsp;&nbsp;&nbsp; 点赞
+                        <i class="el-icon-service"></i>
+                    </div>
+                    <div>收藏
+                        <i class="el-icon-star-off"></i>
+                    </div>
+                </div>
+
+                <div class="commend">
+                    <i class="el-icon-edit-outline"></i>
+                    <h4>历史评论</h4>
+                    <div class="history">
+                        <div class="comleft">
+                            <img src="./image/lunbo3.jpg" alt="" class="cheader">
+                        </div>
+                        <div class="comright">
+                            <div>
+                                评论人
+                            </div>
+                            <div>
+                                2018-08-24 &nbsp;&nbsp;14:25
+                            </div>
+                            <div>
+                                数据库里的评论内容
+                            </div>
+                            <div>
+                                <span class="authorco"> 作者回复：</span> （ 数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复）
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="history">
+                        <div class="comleft">
+                            <img src="./image/lunbo3.jpg" alt="" class="cheader">
+                        </div>
+                        <div class="comright">
+                            <div>
+                                评论人
+                            </div>
+                            <div>
+                                2018-08-24 &nbsp;&nbsp;14:25
+                            </div>
+                            <div>
+                                数据库里的评论内容
+                            </div>
+                            <div>
+                                <span class="authorco"> 作者回复：</span> （ 数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复）
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <!-- 以上是历史评论循环部分 -->
+
+
+
+                    <h4>我来说说...</h4>
+                    <el-form ref="form" :model="myformdata" label-width="80px">
+                        <el-form-item >
+                            <el-input type="textarea" :rows="4" v-model="myformdata.textarea"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="upmydiss" class="mypbutton">上传
+                                <i class="el-icon-upload el-icon--right"></i>
+                            </el-button>
+                        </el-form-item>
+                        <el-form>
+                </div>
+
+
+
+
+
+
             </el-col>
-            <el-col  class="a2" >我是右边内容</el-col>
-    </div>
-   
-</el-row>
+        </el-col>
+        <el-col :sm="12" :xs="24">
+            <el-row >
+                    <el-col :sm="21" :xs="24" :offset="1">
+                            <div class="rightb">
+                                <div class="rightfirst">分享作者</div>
+                                <div class="seconddiv">
+                                    <div  class="child childone">
+                                        <img src="/image/lunbo3.jpg" alt="" class="childimg">
+                                    </div>
+                                    <div class="child">
+                                        作者:cindy
+                                    </div>
+                                    <div class="child">
+                                        他还没有发表签名哦
+                                    </div>
+                                </div>
+                                
+                                <div class="rnbottom">
+                                  <ul class="myul">
+                                      <li>笔记</li>
+                                      <li>粉丝</li>
+                                      <li>收藏与点赞</li>
+                                  </ul>
+                                  <ul  class="myul">
+                                        <li>123</li>
+                                        <li>245</li>
+                                        <li>344</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </el-col>
+            
+            </el-row>
+           <el-row >
+               <el-col :sm="21" :xs="24" :offset="1" id="fixPara">
+                <div class="rightbody" >
+                    <div class="rightfirst">你可能感兴趣的...</div>
+
+                                <div class="repeat">
+                                        <div class="repeatone">
+                                            <img src="/image/lunbo3.jpg" alt="" class="repeatimg">
+                                        </div>
+                                        <div class="repeattwo">
+                                            <ul>
+                                                <li>作者</li>
+                                                <li>收藏次数</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="repeat">
+                                            <div class="repeatone">
+                                                <img src="/image/lunbo1.jpg" alt="" class="repeatimg">
+                                            </div>
+                                            <div class="repeattwo">
+                                                <ul>
+                                                    <li>作者</li>
+                                                    <li>收藏次数</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="repeat">
+                                                <div class="repeatone">
+                                                    <img src="/image/lunbo2.jpg" alt="" class="repeatimg">
+                                                </div>
+                                                <div class="repeattwo">
+                                                    <ul>
+                                                        <li>作者</li>
+                                                        <li>收藏次数</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="repeat">
+                                                    <div class="repeatone">
+                                                        <img src="/image/lunbo5.jpg" alt="" class="repeatimg">
+                                                    </div>
+                                                    <div class="repeattwo">
+                                                        <ul>
+                                                            <li>作者</li>
+                                                            <li>收藏次数</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="repeat">
+                                                        <div class="repeatone">
+                                                            <img src="/image/lunbo4.jpg" alt="" class="repeatimg">
+                                                        </div>
+                                                        <div class="repeattwo">
+                                                            <ul>
+                                                                <li>作者</li>
+                                                                <li>收藏次数</li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                                    
+                    <div class="rnbottom botdesc">
+                        查看更多
+                    </div>
+
+                </div>
+               </el-col>
+           </el-row>
+        </el-col>
+        </div>
+
+    </el-row>
 
 
 
 
-<%include footer.html%>
-<script>
-    new Vue({
-            el: '#app'
-        
-    })
-</script>
+    <%include footer.html%>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.bootcss.com/qs/6.5.1/qs.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script>
+            new Vue({
+                    el: '#app',
+                    data: {
+                        
+                        myformdata: {
+                            textarea: '',
+                            pid:'<%=result.pid%>'
+                        }
+
+                    },
+                    methods: {
+                        upmydiss() {
+                            axios.post('/detil', Qs.stringify(this.myformdata)).then(function (response) {
+                                console.log(response);
+                                console.log("发表评论");
+                                window.location.reload();
+                            })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        },
+                        like(){
+
+                        }
+                    }
+
+                })
+        </script>
+        <!-- <script type="text/javascript">
+            window.onscroll=function(){
+                if($(document).scrollTop()>280){
+                    $("#fixPara").addClass('myscroll')
+                }else{
+                    $("#fixPara").removeClass('myscroll')
+                }
+              
+                }
+        </script>
+     -->

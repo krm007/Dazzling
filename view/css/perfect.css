@@ -1,8 +1,10 @@
 .pcontent{
 border-bottom: 1px solid gray;
-width: 100%;
+width: 80%;
+margin-left: 10%;
 height: 50px;
-background-color:peachpuff;
+margin-bottom: 20px;
+/* background-color:#FFF5EE; */
 }
 .pchild{
     height: 40px;
