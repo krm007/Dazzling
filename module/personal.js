@@ -1,3 +1,4 @@
+const async = require("async");
 module.exports = function () {
     let router = express.Router();
     // 显示个人中心页面
@@ -12,7 +13,7 @@ module.exports = function () {
     router.get('/reg', (req, res) => {
         res.render('reg');
     });
-  
+
     //处理注册的数据
     router.post('/regsubmit', (req, res) => {
         //检查账号是否已经存在
@@ -64,8 +65,8 @@ module.exports = function () {
                 res.json({ r: 'pw_err' });
                 return;
             }
-            console.log(result[0].header);
-            console.log(result[0].uid);
+            // console.log(result[0].header);
+            // console.log(result[0].uid);
             //登录成功后做什么事情
             req.session.uid = result[0].uid;
             req.session.username = result[0].username;
@@ -99,7 +100,7 @@ module.exports = function () {
     //进到个人资料修改中心的前提是登录
     router.use((req, res, next) => {
         if (!req.session.uid) {
-            res.redirect('/personal/login'); 
+            res.redirect('/personal/login');
             return;
         }
         next();
@@ -107,23 +108,44 @@ module.exports = function () {
 
     //进入个人资料修改中心
     router.get('/user', (req, res) => {
-        let sql = 'SELECT * FROM publish WHERE status=0';
-        mydb.query(sql, (err, results) => {
-            if (err) {
-                console.log(err);
+
+        async.series({
+            // 添加我的发布
+            postlist: function (cb) {
+                let sql = 'SELECT * FROM publish WHERE uid=?';
+                mydb.query(sql, req.session.uid, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    cb(null, result);
+                });
+            },
+            // 添加我的评论
+            mydiscuss: function (cb) {
+                let sql = 'SELECT d.*,p.workname,p.pid FROM discuss AS d LEFT JOIN publish AS p ON d.pid=p.pid WHERE d.uid=?';
+                mydb.query(sql, req.session.uid, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    console.log(result);
+                    cb(null, result);
+                });
             }
+        }, (err, results) => {
             // console.log(results);
-            res.render('user', {
-                postlist: results,
-                username: req.session.username
-            });
+            results.username = req.session.username;
+            results.header = req.session.header;
+
+            // console.log(results.mydiscuss);
+            res.render('user', results);
         });
+
     });
 
     // 删除我的发布
-    router.post('/delmypost',(req,res)=>{
-        let delsql='UPDATE publish SET status=1 WHERE pid=?';
-        mydb.query(delsql,req.body.pid,(err,result)=>{
+    router.post('/delmypost', (req, res) => {
+        let delsql = 'UPDATE publish SET status=1 WHERE pid=?';
+        mydb.query(delsql, req.body.pid, (err, result) => {
             if (err) {
                 console.log(err);
                 res.json({ r: 'db_err' });
@@ -132,17 +154,25 @@ module.exports = function () {
             res.json({ r: 'ok' });
         });
     });
-
-
-
-
-
-
+    //删除我的评论
+    router.post('/delmydiscuss', (req, res) => {
+        let delsql = 'UPDATE discuss SET status=1 WHERE did=?';
+        mydb.query(delsql, req.body.did, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.json({ r: 'db_err' });
+                return;
+            }
+            res.json({ r: 'ok' });
+        });
+    });
     //上传头像
     router.post('/saveheader', (req, res) => {
         let header = req.body.header;
         let sql = 'UPDATE user SET header = ? WHERE uid = ? LIMIT 1';
         mydb.query(sql, [header, req.session.uid], (err, result) => {
+            //新的头像地址要同步更新到session里面
+            req.session.header=header;
             res.json({ r: 'ok' });
         });
     });
@@ -199,19 +229,19 @@ module.exports = function () {
         res.redirect('/personal/login');
     })
 
-    router.get('/publish',(req,res)=>{
+    router.get('/publish', (req, res) => {
         res.render('publish')
-      });
-      router.post('/publish',(req,res)=>{
-        let p=req.body;
-       
-        console.log(req.session.username,req.session.uid);
-        let sql=`INSERT INTO  publish(workname,description,keywords,progress,addtime,imglist,wname,uid,username) VALUES (?,?,?,?,?,?,?,?,?)`
-        mydb.query(sql,[p.workname,p.desc,p.kwd,p.progress,new Date().toLocaleString(),JSON.stringify(p.dialogImageUrl),p.wname,req.session.uid,req.session.username],(err,result)=>{
-            if(err){
-                res.json({r:'db_err'});
-            }else{
-                res.json({r:'success'});
+    });
+    router.post('/publish', (req, res) => {
+        let p = req.body;
+
+        console.log(req.session.username, req.session.uid);
+        let sql = `INSERT INTO  publish(workname,description,keywords,progress,addtime,imglist,wname,uid,username) VALUES (?,?,?,?,?,?,?,?,?)`
+        mydb.query(sql, [p.workname, p.desc, p.kwd, p.progress, new Date().toLocaleString(), JSON.stringify(p.dialogImageUrl), p.wname, req.session.uid, req.session.username], (err, result) => {
+            if (err) {
+                res.json({ r: 'db_err' });
+            } else {
+                res.json({ r: 'success' });
             }
         })
     });

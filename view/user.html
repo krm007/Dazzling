@@ -142,21 +142,36 @@
                 <el-tab-pane label="我的评论">
                     <el-row>
                         <el-col :span="20" :offset="2">
-                            <el-card :body-style="{ padding: '0px' }" shadow="hover">
-                                <!-- 头部 -->
-                                <div slot="header" class="clearfix">
-                                    <time class="time">评论时间：{{ currentDate }}</time>
-                                    <el-button style="float: right; padding: 3px 0" type="text">
-                                        <i class="el-icon-delete">删除</i>
-                                    </el-button>
-                                </div>
-                                <!-- body -->
-                                <div style="padding: 14px;">
-                                    <el-card shadow="hover">
-                                        <span>这是评论内容...</span>
-                                    </el-card>
-                                </div>
-                            </el-card>
+                            <% for(let m of mydiscuss){%>
+                                <el-card :body-style="{ padding: '0px'}" shadow="hover" id="post_<%=m.did%>" style="border:1px rgb(64, 158, 255) solid">
+                                    <!-- 头部 -->
+                                    <div slot="header" class="clearfix" >
+                                        <time class="time">评论时间:
+                                            <%=m.disstime.toLocaleString()%>
+                                        </time>
+                                        <el-button style="float: right; padding: 3px 0" type="text" @click="delmydiscuss(<%=m.did%>)">
+                                            <i class="el-icon-delete">删除</i>
+                                        </el-button>
+                                    </div>
+                                    <!-- body -->
+                                    <div style="padding: 14px;">
+                                        <!-- <el-card shadow="hover"> -->
+                                            <span style="color: gray">评论自:
+                                                <a href="/detil?pid=<%=m.pid%>" style="text-decoration: none;color:rgb(64, 158, 255) ">
+                                                    <%=m.workname%>
+                                                </a>
+                                            </span>
+                                        <!-- </el-card> -->
+                                        <el-card shadow="hover">
+                                            <p  style="color: gray">评论内容：
+                                                <span style="color: rgb(64, 158, 255) ">
+                                                    <%=m.dcontent%>
+                                                </span>
+                                            </p>
+                                        </el-card>
+                                    </div>
+                                </el-card><br>
+                                <%}%>
                         </el-col>
                     </el-row>
                 </el-tab-pane>
@@ -200,7 +215,7 @@
         el: '#app',
         data: {
             tabPosition: 'top',
-            dialogImageUrl: 'http://localhost:81/uploads/2018/08/1534923654928_019661.jpeg',
+            dialogImageUrl: '<%=header.replace(/\\/g,"/")%>',
             dialogVisible: false,
             currentDate: new Date().toLocaleString(),
             // headerpath:''
@@ -245,6 +260,8 @@
                 let This = this;
                 axios.post("/personal/saveheader", Qs.stringify({ header: This.dialogImageUrl })).then(response => {
                     console.log("success...");
+                    alert("保存头像成功！");
+                    window.onload.reload();
                 }).catch(response => {
                     console.log("error...");
                 })
@@ -279,12 +296,24 @@
             // 点击删除我的发布
             delmypost: function (myid) {
                 axios.post('./delmypost', Qs.stringify({ pid: myid })).then(response => {
-                    console.log(response.data.r);
+                    // console.log(response.data.r);
                     if (!confirm('确认删除？')) {
                         return;
                     }
                     if (response.data.r == "ok") {
                         let mypost = document.getElementById('post_' + myid);
+                        mypost.style.display = "none";
+                    }
+                });
+            },
+            delmydiscuss:function(mdid){
+                axios.post('./delmydiscuss', Qs.stringify({ did: mdid })).then(response => {
+                    // console.log(response.data.r);
+                    if (!confirm('确认删除？')) {
+                        return;
+                    }
+                    if (response.data.r == "ok") {
+                        let mypost = document.getElementById('post_' + mdid);
                         mypost.style.display = "none";
                     }
                 });
