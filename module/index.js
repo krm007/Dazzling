@@ -13,7 +13,33 @@ res.render('business')
 });
 // 精选社区页面
 router.get('/perfect',(req,res)=>{
-res.render('perfect');
+    async.series({
+        mostcollect:function(cb){
+            let sql=`select workname,description,addtime,imglist,pid from publish order by collectnums  asc limit 10`;
+            mydb.query(sql,(err,results)=>{
+                cb(null,results)
+            })
+        },
+        mostlike:function(cb){
+            let sql=`select workname,description,addtime,imglist,pid from publish order by zannums  asc limit 8`;
+            mydb.query(sql,(err,results)=>{
+                cb(null,results)
+            })
+        }
+    },(err,results)=>{
+        let mostcollect=results.mostcollect;
+        let mostlike=results.mostlike;
+        
+        console.log(mostlike);
+        // console.log(mostcollect);
+        res.render('perfect',
+        {
+            results:results,
+            mostcollect:mostcollect,
+            mostlike:mostlike
+        });
+    })
+
 });
 //眼影页面
 router.get('/eshadow',(req,res)=>{
@@ -56,32 +82,7 @@ router.get('/eshadow',(req,res)=>{
         res.render('about')
     });
   //产品细节页面
-//   router.get('/detil',(req,res)=>{
-//     let q=req.query;
-//     let sql =` select * from publish  where pid = ? `;
-//     mydb.query(sql,q.pid,(err,result)=>{
-//         // console.log(result[0]);
-//         let keywd=result[0].keywords.split("，");
-//         let imglist=JSON.parse(result[0].imglist);
-//         let progress1=result[0].progress.replace(/<\/?.+?>/g,"");
-//         let progress=progress1.replace(/ /g,"")
-//         console.log(progress);
-//         // console.log(imglist);
-//         if(err){
-//             console.log(err);
-//             return;
-//         }
-       
-//         res.render('detil',
-//             {
-//                 result: result[0],
-//                 keywd: keywd,
-//                 imglist:imglist,
-//                 progress:progress
-//             });
-//     });
-    
-//   });  
+  
 router.get('/detil',(req,res)=>{
     let q=req.query;
     let pid=q.pid;
@@ -89,7 +90,19 @@ router.get('/detil',(req,res)=>{
         publish:function(cb){
             let sql =` select * from publish  where pid = ? limit 1 `;
             mydb.query(sql,pid,(err,results)=>{
-                cb(null,results)
+                //查询关联信息
+                let allkws  = results[0].keywords.split('，');
+                let sql1 =`select publish.pid, publish.workname, user.header,user.uid,user.username from publish left join user on user.uid = publish.uid where 1 AND (0 `;
+                for (const k of allkws) {
+                    sql1 +=`OR keywords like "%${k}%" `;
+                }
+                sql1 +=`) limit 3`;
+                mydb.query(sql1,(err,results1)=>{
+                    // console.log(results1);
+                    results.maybe = results1;
+                    cb(null,results);
+                });
+                
             });
         },
         discuss:function(cb){
@@ -101,27 +114,35 @@ router.get('/detil',(req,res)=>{
         
 
     },(err,results)=>{
-        let publish=results.publish[0];
-        let discuss=results.discuss;
-        console.log(discuss);
-        let keywd=publish.keywords.split("，");
-                let imglist=JSON.parse(publish.imglist);
-                let progress1=publish.progress.replace(/<\/?.+?>/g,"");
-                let progress=progress1.replace(/ /g,"")
-        // console.log(results.publish[0].imglist);
+        let publish = results.publish[0];
+        // console.log(results);
+        let discuss = results.discuss;
+        let maybe = results.publish.maybe;
+        let keywd = publish.keywords.split("，");
+        let imglist = JSON.parse(publish.imglist);
+        let progress1 = publish.progress.replace(/<\/?.+?>/g, "");
+        let progress = progress1.replace(/ /g, "");
+        // console.log(maybe);
         res.render('detil',{
-            results:results,
             keywd: keywd,
             imglist:imglist,
             progress:progress,
             publish:publish,
-            discuss:discuss
+            discuss:discuss,
+            maybe:maybe
+
+            
         })
     })
 });
+
   //发表评论
   router.post('/detil',(req,res)=>{
     let p=req.body;
+    if(!req.session.username){
+        res.redirect('/personal/login'); 
+            return;
+    }
     console.log(req.session.username,req.session.uid);
     console.log(p.pid,p.textarea);
 
@@ -157,8 +178,8 @@ router.post('/detil/collection',(req,res)=>{
     let p=req.body;
     let collectnums=p.mycollectnums;
     console.log(p.pid,collectnums);
-    let sql=`update  publish set collectnums = ? where pid= ? limit 1`;
-    mydb.query(sql,[collectnums++,p.pid],(err,result)=>{
+    let sql=`update  publish set collectnums = collectnums+1  where pid= ? limit 1`;
+    mydb.query(sql,p.pid,(err,result)=>{
         if(err){
             console.log(err);
             return;
