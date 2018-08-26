@@ -6,20 +6,20 @@
                         <el-input v-model="formdata.workname"></el-input>
                     </el-form-item>
                     <el-form-item label="作品分类">
-                        <el-select v-model="formdata.wname" placeholder="请选择作品分类">
+                        <el-select v-model="formdata.wname"  placeholder="请选择作品分类">
                             <el-option label="口红" value="口红">口红</el-option>
                             <el-option label="睫毛" value="睫毛">睫毛</el-option>
                             <el-option label="眉笔" value="眉笔">眉笔</el-option>
                             <el-option label="眼线" value="眼线">眼线</el-option>
                             <el-option label="粉底" value="粉底">粉底</el-option>
-                            <el-option label="眼影" value="眼影">眼影</el-option>
+                            <el-option label="眼影" value="1">眼影</el-option>
                         </el-select>
                     </el-form-item>
                     <el-form-item label="作品描述">
                         <el-input v-model="formdata.desc"></el-input>
                     </el-form-item>
                     <el-form-item label="关键字">
-                        <el-input v-model="formdata.kwd"></el-input>
+                        <el-input v-model="formdata.kwd" placeholder="多个关键字，以逗号分隔"></el-input>
                     </el-form-item>
                     <el-form-item label="精选图片">
                         <el-upload
@@ -38,7 +38,7 @@
                     </el-form-item>
 
 
-                    <el-form-item label="操作流程">
+                    <el-form-item label="相关细节">
                         <div id="editor"></div>
                         <textarea id="qtitle" cols="10" rows="10" class="hide"></textarea>
                     </el-form-item>
@@ -86,6 +86,7 @@
             }
         },
         methods: {
+            // 上传整个表单
             upmywork() {
                 this.formdata.progress = document.getElementById('qtitle').value;
                 axios.post('/personal/publish', Qs.stringify(this.formdata)).then(function (response) {
@@ -96,6 +97,7 @@
                         console.log(error);
                     });
             },
+            // 处理删除图片
             handleRemove(file, fileList) {
                 // console.log(fileList);
                 this.formdata.dialogImageUrl = [];
@@ -105,6 +107,7 @@
                     }
                 }
             },
+            // 图片上传成功后处理函数三个参数未知的情况下打印出来看看
             getImage(response, file, fileList){
                 console.log(fileList);
                 this.formdata.dialogImageUrl = [];

@@ -12,7 +12,7 @@ module.exports = function () {
     router.get('/reg', (req, res) => {
         res.render('reg');
     });
-
+  
     //处理注册的数据
     router.post('/regsubmit', (req, res) => {
         //检查账号是否已经存在
@@ -199,18 +199,19 @@ module.exports = function () {
         res.redirect('/personal/login');
     })
 
-    router.get('/publish', (req, res) => {
-        res.render('publish');
-    });
-    router.post('/publish', (req, res) => {
-        let p = req.body;
-        console.log(req.session.username, req.session.uid);
-        let sql = `INSERT INTO  publish(workname,description,keywords,progress,addtime,imglist,wname,uid,username) VALUES (?,?,?,?,?,?,?,?,?)`
-        mydb.query(sql, [p.workname, p.desc, p.kwd, p.progress, new Date().toLocaleString(), JSON.stringify(p.dialogImageUrl), p.wname, req.session.uid, req.session.username], (err, result) => {
-            if (err) {
-                res.json({ r: 'db_err' });
-            } else {
-                res.json({ r: 'success' });
+    router.get('/publish',(req,res)=>{
+        res.render('publish')
+      });
+      router.post('/publish',(req,res)=>{
+        let p=req.body;
+       
+        console.log(req.session.username,req.session.uid);
+        let sql=`INSERT INTO  publish(workname,description,keywords,progress,addtime,imglist,wname,uid,username) VALUES (?,?,?,?,?,?,?,?,?)`
+        mydb.query(sql,[p.workname,p.desc,p.kwd,p.progress,new Date().toLocaleString(),JSON.stringify(p.dialogImageUrl),p.wname,req.session.uid,req.session.username],(err,result)=>{
+            if(err){
+                res.json({r:'db_err'});
+            }else{
+                res.json({r:'success'});
             }
         })
     });
