@@ -27,44 +27,45 @@
                 </div>
                 
                 <div class="fuwenben">
-                    <%-result.progress%>
+                    <%-publish.progress%>
                 </div>
 
                 <div class="time">
-                    <div>发布时间&nbsp;<span class="timefont"><%=result.addtime.toLocaleString()%></span></div>
-                    <div @click="like">
-                        <span>|</span> &nbsp;&nbsp;&nbsp; 点赞
-                        <i class="el-icon-service"></i>
+                    <div>发布时间&nbsp;<span class="timefont"><%=publish.addtime.toLocaleString()%></span></div>
+                    <div>
+                        <span>|</span> &nbsp;&nbsp;&nbsp;<i class="el-icon-service"></i> <span @click="givelike">点赞:<%=publish.zannums%></span>
+                        
                     </div>
-                    <div>收藏
+                    <div>
                         <i class="el-icon-star-off"></i>
+                        <span @click="collection">收藏:<%=publish.collectnums%></span>
                     </div>
                 </div>
 
                 <div class="commend">
                     <i class="el-icon-edit-outline"></i>
                     <h4>历史评论</h4>
+                    <%for(let dis of discuss){%>
                     <div class="history">
                         <div class="comleft">
                             <img src="./image/lunbo3.jpg" alt="" class="cheader">
                         </div>
                         <div class="comright">
                             <div>
-                                评论人
+                                <%=dis.username%>
                             </div>
                             <div>
-                                2018-08-24 &nbsp;&nbsp;14:25
+                               <%=dis.disstime.toLocaleString()%>
                             </div>
                             <div>
-                                数据库里的评论内容
+                              <%=dis.dcontent%>
                             </div>
                             <div>
                                 <span class="authorco"> 作者回复：</span> （ 数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复）
                             </div>
                         </div>
-
-
                     </div>
+                   <%}%>
                     <div class="history">
                         <div class="comleft">
                             <img src="./image/lunbo3.jpg" alt="" class="cheader">
@@ -111,7 +112,7 @@
 
             </el-col>
         </el-col>
-        <el-col :sm="12" :xs="24">
+        <el-col :sm="12" :xs="24" class="drightcont" class="hidden-xs-only">
             <el-row >
                     <el-col :sm="21" :xs="24" :offset="1">
                             <div class="rightb">
@@ -121,7 +122,7 @@
                                         <img src="/image/lunbo3.jpg" alt="" class="childimg">
                                     </div>
                                     <div class="child">
-                                        作者:cindy
+                                        作者:<%=publish.username%>
                                     </div>
                                     <div class="child">
                                         他还没有发表签名哦
@@ -171,28 +172,7 @@
                                                 </ul>
                                             </div>
                                         </div>
-                                        <div class="repeat">
-                                                <div class="repeatone">
-                                                    <img src="/image/lunbo2.jpg" alt="" class="repeatimg">
-                                                </div>
-                                                <div class="repeattwo">
-                                                    <ul>
-                                                        <li>作者</li>
-                                                        <li>收藏次数</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div class="repeat">
-                                                    <div class="repeatone">
-                                                        <img src="/image/lunbo5.jpg" alt="" class="repeatimg">
-                                                    </div>
-                                                    <div class="repeattwo">
-                                                        <ul>
-                                                            <li>作者</li>
-                                                            <li>收藏次数</li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                  
                                                 <div class="repeat">
                                                         <div class="repeatone">
                                                             <img src="/image/lunbo4.jpg" alt="" class="repeatimg">
@@ -231,9 +211,11 @@
                         
                         myformdata: {
                             textarea: '',
-                            pid:'<%=result.pid%>'
-                        }
-
+                            pid:'<%=publish.pid%>'
+                        },
+                        myzannums:'<%=publish.zannums%>',
+                        mycollectnums:'<%=publish.collectnums%>',
+                        pid:'<%=publish.pid%>'
                     },
                     methods: {
                         upmydiss() {
@@ -246,21 +228,46 @@
                                     console.log(error);
                                 });
                         },
-                        like(){
-
+                        givelike(){
+                            axios.post('/detil/givelike',Qs.stringify({ myzannums:'<%=publish.zannums%>',
+                            pid:'<%=publish.pid%>'})).then(function(response){
+                                console.log(response);
+                                window.location.reload();
+                            })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
+                        },
+                        collection(){
+                            axios.post('/detil/collection',Qs.stringify({ mycollectnums:'<%=publish.collectnums%>',
+                            pid:'<%=publish.pid%>'})).then(function(response){
+                                console.log(response);
+                                window.location.reload();
+                            })
+                                .catch(function (error) {
+                                    console.log(error);
+                                });
                         }
                     }
 
                 })
         </script>
-        <!-- <script type="text/javascript">
+        <script type="text/javascript">
+        let width = $("#fixPara").width();
+        let bottom=$("#fixPara").css('margin-bottom');
+       
             window.onscroll=function(){
+                // console.log(width);
+                // console.log(bottom);
                 if($(document).scrollTop()>280){
-                    $("#fixPara").addClass('myscroll')
+                    $("#fixPara").addClass('myscroll');
+                    $("#fixPara").css('width', width);
+                    $("#fixPara").css('margin-bottom', 300);
+
                 }else{
                     $("#fixPara").removeClass('myscroll')
                 }
               
                 }
         </script>
-     -->
+    
