@@ -48,7 +48,7 @@
                     <%for(let dis of discuss){%>
                     <div class="history">
                         <div class="comleft">
-                            <img src="./image/lunbo3.jpg" alt="" class="cheader">
+                            <img src="<%=maybe[0].header%>" alt="" class="cheader">
                         </div>
                         <div class="comright">
                             <div>
@@ -78,10 +78,10 @@
                                 2018-08-24 &nbsp;&nbsp;14:25
                             </div>
                             <div>
-                                数据库里的评论内容
+                                楼主棒棒哒
                             </div>
                             <div>
-                                <span class="authorco"> 作者回复：</span> （ 数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复数据里的作者回复）
+                                <span class="authorco"> 作者回复：</span> （ 海底月是天上月，眼前人是心上人）
                             </div>
                         </div>
 
@@ -119,7 +119,7 @@
                                 <div class="rightfirst">分享作者</div>
                                 <div class="seconddiv">
                                     <div  class="child childone">
-                                        <img src="/image/lunbo3.jpg" alt="" class="childimg">
+                                        <img src="<%=maybe[0].header%>" alt="" class="childimg">
                                     </div>
                                     <div class="child">
                                         作者:<%=publish.username%>
@@ -149,41 +149,20 @@
                <el-col :sm="21" :xs="24" :offset="1" id="fixPara">
                 <div class="rightbody" >
                     <div class="rightfirst">你可能感兴趣的...</div>
-
+                            <%for(let r of maybe){%>
                                 <div class="repeat">
                                         <div class="repeatone">
-                                            <img src="/image/lunbo3.jpg" alt="" class="repeatimg">
+                                            <img src="<%=r.header%>" alt="" class="repeatimg">
                                         </div>
                                         <div class="repeattwo">
                                             <ul>
-                                                <li>作者</li>
-                                                <li>收藏次数</li>
+                                                <li><%=r.workname%></li>
+                                                <li><%=r.username%></li>
                                             </ul>
                                         </div>
                                     </div>
-                                    <div class="repeat">
-                                            <div class="repeatone">
-                                                <img src="/image/lunbo1.jpg" alt="" class="repeatimg">
-                                            </div>
-                                            <div class="repeattwo">
-                                                <ul>
-                                                    <li>作者</li>
-                                                    <li>收藏次数</li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                              <%}%>      
                                   
-                                                <div class="repeat">
-                                                        <div class="repeatone">
-                                                            <img src="/image/lunbo4.jpg" alt="" class="repeatimg">
-                                                        </div>
-                                                        <div class="repeattwo">
-                                                            <ul>
-                                                                <li>作者</li>
-                                                                <li>收藏次数</li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
                                                                     
                     <div class="rnbottom botdesc">
                         查看更多
@@ -252,7 +231,7 @@
 
                 })
         </script>
-        <script type="text/javascript">
+        <!-- <script type="text/javascript">
         let width = $("#fixPara").width();
         let bottom=$("#fixPara").css('margin-bottom');
        
@@ -269,5 +248,5 @@
                 }
               
                 }
-        </script>
+        </script> -->
     

@@ -55,80 +55,64 @@
         <el-row>
                 <div class="waterfull">
                         <h3 class="myhtitle">热门推荐</h3>
-                        <el-col :span="5" v-for="item in imgurls">
+                        <%for(let r of mostcollect){%>
+                        <el-col :span="5">
                                 <el-card :body-style="{ padding: '10px' }" class="cardstyle box">
-                                        <img :src="item.url" class="image">
+                                        <a href="/detil?pid=<%=r.pid%>">  <img src="<%=JSON.parse(r.imglist)[0]%>" class="image"></a>
                                         <div style="padding: 14px;" class="pdesc">
-                                                <h5>好吃的汉堡</h5>
-                                                <p>这是描述部分。。。。。。。。。。。。。。。</p>
+                                                <h5><%=r.workname%></h5>
+                                                <p><%=r.description.substring(0,19 )%></p>
                                                 <div class="bottom clearfix">
-                                                        <time class="time">{{ currentDate }}</time>
+                                                        <time class="time"><%=r.addtime.toLocaleString()%></time>
                                                         <el-button type="text" class="button">收藏</el-button>
                                                 </div>
                                         </div>
                                 </el-card>
                         </el-col>
+                        <%}%>
                 </div>
         </el-row>
 
         <el-row>
                 <div class="waterfull">
                         <h3 class="myhtitle">人气精选</h3>
-                        <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1">
-                                <img src="./image/lunbo3.jpg" alt="" class="hotpic">
-                        </el-col>
+                        <%
+                        let a = 0;
+                        for(let r of mostlike) {
+                                a++;
+                        if(a%2){
+                        %>
+                       <a href="/detil?pid=<%=r.pid%>"> <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1">
+                                <img src="<%=JSON.parse(r.imglist)[0]%>" alt="" class="hotpic">
+                        </el-col></a>
                         <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" :offset="1">
                                 <div>
-                                        <h4>分类</h4>
-                                        <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                        <h4><%=r.workname%></h4>
+                                        <p><%=r.description%></p>
                                 </div>
 
                         </el-col>
+                        <% }else{ %>
                         <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" >
                                         <div>
-                                                <h4>分类</h4>
-                                                <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
+                                                <h4><%=r.workname%></h4>
+                                                <p><%=r.description%></p>
                                         </div>
         
                                 </el-col>
-                        <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1" :offset="1">
-                                        <img src="./image/lunbo3.jpg" alt="" class="hotpic">
-                                </el-col>
-                               
+                                <a href="/detil?pid=<%=r.pid%>"> <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1" :offset="1">
+                                        <img src="<%=JSON.parse(r.imglist)[0]%>" alt="" class="hotpic">
+                                </el-col></a>
+                                <%}
+                        }%>     
                 </div>
               
         
 
         </el-row>
-        <el-row>
-                        <div class="waterfull">
-                          
-                                <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1">
-                                        <img src="./image/lunbo3.jpg" alt="" class="hotpic">
-                                </el-col>
-                                <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" :offset="1">
-                                        <div>
-                                                <h4>分类</h4>
-                                                <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
-                                        </div>
-        
-                                </el-col>
-                                <el-col :sm="7" :xs="24" class="hidden-xs-only hotdiv2" >
-                                                <div>
-                                                        <h4>分类</h4>
-                                                        <p>这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分这是描述部分</p>
-                                                </div>
-                
-                                        </el-col>
-                                <el-col :sm="11" :xs="24" class="hidden-xs-only hotdiv1" :offset="1">
-                                                <img src="./image/lunbo3.jpg" alt="" class="hotpic">
-                                        </el-col>
-                                       
-                        </div>
-                      
+       
                 
         
-                </el-row>
 
         <%include footer.html%>
 
