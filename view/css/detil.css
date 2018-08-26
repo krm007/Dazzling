@@ -17,7 +17,7 @@
     background-color:	#FCFCFC;
 }
 
-/* ¬÷≤•Õº—˘ Ω */
+/* ËΩÆÊí≠ÂõæÊ†∑Âºè */
 .el-carousel__item h3 {
     color: #475669;
     font-size: 14px;
@@ -84,7 +84,7 @@ display: inline-block;
     }
     .time div:nth-child(3){
         font-size: 12px;
-        width: 10%;
+        width: 14%;
         height: 50px;
         padding: 15px;
         display: inline-block;
@@ -157,7 +157,7 @@ display: inline-block;
         .authorco{
             color: #475669
         }
-        /* “‘…œŒ™◊Û≤‡—˘ Ω */
+        /* ‰ª•‰∏ä‰∏∫Â∑¶‰æßÊ†∑Âºè */
         .rightb{
             /* background-color: palegreen; */
             height: 180px;
@@ -279,7 +279,7 @@ display: inline-block;
        }
        .rightbody{
         margin-top: 20px;
-        /* height: 560px; */
+        cursor: pointer;
         width: 100%;
         border-radius: 15px;
         position: relative;
@@ -293,5 +293,7 @@ display: inline-block;
        }
        .myscroll{
         position: fixed;
-        top: 0
+        top: 0;
+        padding-bottom: 100px
     }
+    
