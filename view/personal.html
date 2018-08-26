@@ -1,46 +1,45 @@
 <% include header.html%>
 
-    
+
 
     <div class="cen_2">
         <p>从现在起加入美妆达人行列...</p>
         <div class="cen_1">
-                <p></p>
-                <button type="button" @click="getreg">注册</button>
-                <button @click="getlogin">登录</button>
-                <button @click="updatepesonal">个人资料</button>
-                <!-- <img :src="url" alt="头像" class="myhead"> -->
-            </div>
+            <button type="button" @click="getreg">注册</button>
+            <button @click="getlogin">登录</button>
+            <button @click="updatepesonal">个人资料</button>
+        </div>
         <button class="mybutton" @click="getpublish">加入Dazzling</button>
+        <!-- <img :src="url" alt="头像" class="myhead"> -->
     </div>
     <div class="cen_3">
-        
+
     </div>
-<%include footer.html%>
-<script>
-    new Vue({
-        el: "#app",
-        data: {
-           url:"./image/loginbg.jpg"
-        },
-        methods:{
-            // 注册
-            getreg:function(){
-                console.log(123);
-                window.location.href="/personal/reg";
-            },
-            // 登录
-            getlogin:function(){
-                window.location.href="/personal/login";
-            },
-            // 修改个人资料
-            updatepesonal:function(){
-                window.location.href="/personal/user";
-            },
-            // 用户添加
-            getpublish:function(){
-                window.location.href="/personal/publish";
-            }
-        }
-    })
-</script>
+    <%include footer.html%>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    url: "./image/loginbg.jpg"
+                },
+                methods: {
+                    // 注册
+                    getreg: function () {
+                        console.log(123);
+                        window.location.href = "/personal/reg";
+                    },
+                    // 登录
+                    getlogin: function () {
+                        window.location.href = "/personal/login";
+                    },
+                    // 修改个人资料
+                    updatepesonal: function () {
+                        window.location.href = "/personal/user";
+                    },
+                    // 用户添加
+                    getpublish: function () {
+                        window.location.href = "/personal/publish";
+                    }
+                }
+            })
+        </script>

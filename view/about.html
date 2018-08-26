@@ -1,52 +1,58 @@
 <% include header.html%>
-            <!-- 以上是顶部导航内容 -->
-            <el-main>
-                <el-row>
-                        <template>
-                                <el-carousel :interval="2000" type="card" height="400px" >
-                                  <el-carousel-item v-for="item in imgurls">
-                                   <img :src="item.url" alt="" class="imgcl">
-                                  </el-carousel-item>
-                                </el-carousel>
-                              </template>
-                </el-row>
-                <hr>
-                 <el-row line-height="500px" >
-                        <el-steps direction="vertical" :active="2011"  class="mystep">
-                            <h3>公司大事件</h3>
-                                <el-step title=" 2012" description="公司成立啦"></el-step>
-                                <el-step title="2013" description="我们在全国突破了20家分公司"></el-step>
-                                <el-step title="2014" description="正式上线电商"></el-step>
-                                <el-step title="2015" description="App Store中国区总排行榜第一"></el-step>
-                                <el-step title="2016" description="实现个性化推荐"></el-step>
-                                <el-step title="2017" description="由人工运营内容变成智能化"></el-step>
-                                <el-step title="2018" description="用户突破7000万"></el-step>
-                              </el-steps>
-                              <div>
-                                  <img src="./image/new.jpg" alt="" style="    width: 500px;
-                                  height: 750px;
-                                  margin-top: -501px;
-                                  margin-right: -400px;">
-                              </div>
-                 </el-row>
-            </el-main>
-            <!-- 以上是中间内容部分 -->
-<%include footer.html%>
-<script>
-     new Vue({
-        el: '#app',
-        data: {
-            my: {
-                mytitle: true
-            },
-            active: 0,
-            imgurls: [{ url: "./image/lunbo1.jpg" }, { url: "./image/lunbo2.jpg" }, { url: "./image/lunbo3.jpg" }, { url: "./image/lunbo4.jpg" }, { url: "./image/lunbo5.jpg" }]
-        },
-    
-        methods: {
-            next() {
-                if (this.active++ > 2) this.active = 0;
-            }
-        }
-    })
-</script>
+    <!-- 以上是顶部导航内容 -->
+    <el-main>
+        <el-row>
+            <template>
+                <el-carousel :interval="2000" type="card" height="400px">
+                    <el-carousel-item v-for="item in imgurls">
+                        <img :src="item.url" alt="" class="imgcl">
+                    </el-carousel-item>
+                </el-carousel>
+            </template>
+        </el-row>
+        <br>
+        <hr>
+        
+        <div style="background-color: rgb(247, 80, 98);">
+                <br>
+                <br>
+            <h3 style="font-size: 30px;color: #fff">公司大事件</h3>
+            <br>
+            <el-row line-height="500px">
+                <el-steps direction="vertical" class="mystep">
+                    <el-step title="2012" description="公司成立啦"></el-step>
+                    <el-step title="2013" description="我们在全国突破了20家分公司"></el-step>
+                    <el-step title="2014" description="正式上线电商"></el-step>
+                    <el-step title="2015" description="App Store中国区总排行榜第一"></el-step>
+                    <el-step title="2016" description="实现个性化推荐"></el-step>
+                    <el-step title="2017" description="由人工运营内容变成智能化"></el-step>
+                    <el-step title="2018" description="用户突破7000万"></el-step>
+                </el-steps>
+                <div>
+                    <img src="./image/new1.jpg" alt="" style="width: 400px;height:500px;margin-top:-485px;margin-right: -480px;">
+                </div>
+            </el-row>
+        </div>
+
+    </el-main>
+    <br>
+    <!-- 以上是中间内容部分 -->
+    <%include footer.html%>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    my: {
+                        mytitle: true
+                    },
+                    active: 0,
+                    imgurls: [{ url: "./image/mylunbo1.jpg" }, { url: "./image/mylunbo2.jpg" }, { url: "./image/mylunbo3.jpg" }, { url: "./image/mylunbo4.jpg" }, { url: "./image/mylunbo5.jpg" }]
+                },
+
+                methods: {
+                    next() {
+                        if (this.active++ > 2) this.active = 0;
+                    }
+                }
+            })
+        </script>

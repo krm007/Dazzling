@@ -1,14 +1,87 @@
 <%include header.html%>
-<div class=main>
+    <el-row>
+        <el-col :span="11" :xs="22" :offset="1">
+            <div class=main>
+                <canvas id="pinkboard"></canvas>
+            </div>
+        </el-col>
+        <el-col :span="10" :offset="1" class="hidden-xs-only">
+            <div class="bs_right">
+                <h1>{{msg_1}}</h1>
+                <br>
+                <p>{{msg_2}}</p>
+                <br>
+                <p>{{msg_3}}</p>
+                <br>
+                <button>{{msg_4}}</button>
+                <button>{{msg_5}}</button>
+                <br>
+                <br>
+                <a href="/入驻文档.docx" download="入驻文档.docx">
+                    <i class="el-icon-download"></i>
+                    第三方商家入驻指南
+                </a>
+            </div>
+        </el-col>
+    </el-row>
+    <br>
+    <!-- 这是第二部分内容 -->
+    <div class="bs_1">
+        <h1>第三方商家入驻流程</h1>
+        <div class="bs_2">
+            <div>
+                <p>注册</p>
+                <p>注册后登录商家入驻系统</p>                
+            </div>
+            <div>
+                <p>资质审核</p>
+                <p>dazzling会尽快反馈审核结果</p>                
+            </div>
+            <div>
+                <p>培训</p>
+                <p>完成dazzling商家培训后，你就可以登录商家管理平台开店了！</p>                
+            </div>
+        </div>
+        <el-steps align-center process-status="finish">
+            <el-step title="1"></el-step>
+            <el-step title="2"></el-step>
+            <el-step title="3"></el-step>
+            <el-step title="4"></el-step>
+            <el-step title="已完成"></el-step>
+        </el-steps>
+        <div class="bs_2">
+            <div>
+                <p>填写入驻信息</p>
+                <p>填写公司信息、财务信息、店铺信息等，并提交相应的资质。</p>                
+            </div>
+            <div>
+                <p>合同签署</p>
+                <p>线上确认合同->审核->我们会给您寄纸质合同->您签署后寄回。</p>
+            </div>
+        </div>
+    </div>
 
-</div>
 
-<%include footer.html%>
-<script>
-     new Vue({
-        el: '#app'
-     
-    
-    
-    })
-</script>
+    <!-- <el-row>
+        <el-col :span="11" :xs="22" :offset="1">
+        </el-col>
+    </el-row> -->
+
+    <%include footer.html%>
+        <script>
+            new Vue({
+                el: '#app',
+                data: {
+                    msg_1: "Dazzling在线商城",
+                    msg_2: "社区电商，期待你的加入！",
+                    msg_3: "Dazzling商城是中国最大的社区电商，专注于消费升级大潮中的年轻时尚群体，通过独有的社区口碑营销和品牌内容推广，帮助品牌更有效地渗透优质用户，快速可持续地增长。",
+                    msg_4: "第三地方商家入驻",
+                    msg_5: "自营供应商入驻",
+
+
+                }
+
+
+            })
+        </script>
+        <script src="/js/business.js"></script>

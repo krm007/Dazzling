@@ -36,31 +36,42 @@
                                 </el-row>
                             </el-col>
                         </el-row>
-                    </el-col><!-- logo-end -->
+                    </el-col>
+                    <!-- logo-end -->
                     <!-- 导航部分 -->
-                    <el-col :span="16" :sm="16" >
+                    <el-col :span="16" :sm="16">
                         <el-row :gutter="8">
                             <el-col :span="16">
-                                    <el-row :gutter="5">
-                                        <el-col :span="4" :sm="4" :xs="24" :offset="4">
-                                            <div class="left"><a href="/">首页</a></div>
-                                        </el-col>
-                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
-                                            <div class="left"><a href="/perfect">社区精选</a></div>
-                                        </el-col>
-                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
-                                            <div class="left"><a href="/about">关于我们</a></div>
-                                        </el-col>
-                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
-                                            <div class="left"><a href="/business">招商合作</a></div>
-                                        </el-col>
-                                        <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
-                                            <div class="left"><a href="/personal">个人中心</a></div>
-                                        </el-col>
-                                        <!-- <el-col :span="4">
+                                <el-row :gutter="5">
+                                    <el-col :span="4" :sm="4" :xs="24" :offset="4">
+                                        <div class="left">
+                                            <a href="/">首页</a>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                        <div class="left">
+                                            <a href="/perfect">社区精选</a>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                        <div class="left">
+                                            <a href="/about">关于我们</a>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                        <div class="left">
+                                            <a href="/business">招商合作</a>
+                                        </div>
+                                    </el-col>
+                                    <el-col :span="4" :sm="4" :xs="24" class="hidden-xs-only">
+                                        <div class="left">
+                                            <a href="/personal">个人中心</a>
+                                        </div>
+                                    </el-col>
+                                    <!-- <el-col :span="4">
                                             <div class="left"></div>
                                         </el-col> -->
-                                    </el-row>
+                                </el-row>
                             </el-col>
                         </el-row>
                     </el-col>
@@ -72,59 +83,88 @@
         <section>
             <!-- 第一部分 -->
             <div>
-                    <el-row :gutter="5">
-                        <el-col :span="20" :sm="20" :xs="2" :offset="2">
-                            <div class="sec_1">
-                                <div class="sec_1_left hidden-xs-only">
-                                    <p>美美哒</p><br>
-                                    <p>要美，就上美美哒~</p>
-                                    <p>Welcome to a page for beauty bloggers</p><br><br><br>
-                                    <el-button type="info" >微信小程序</el-button>
-                                    <el-button type="info">手机app</el-button>                                   
-                                </div>
-                                <div class="sec_1_right" v-html="right_img"></div>                                
+                <el-row :gutter="5">
+                    <el-col :span="20" :sm="20" :xs="2" :offset="2">
+                        <div class="sec_1">
+                            <div class="sec_1_left hidden-xs-only">
+                                <p>美美哒</p>
+                                <br>
+                                <p>要美，就上美美哒~</p>
+                                <p>Welcome to a page for beauty bloggers</p>
+                                <br>
+                                <br>
+                                <br>
+                                <el-button type="info">微信小程序</el-button>
+                                <el-button type="info">手机app</el-button>
                             </div>
-                        </el-col>
-                    </el-row>
+                            <div class="sec_1_right" v-html="right_img"></div>
+                        </div>
+                    </el-col>
+                </el-row>
             </div>
             <!-- 第二部分 -->
             <div class="sec_2">
                 <el-row :gutter="5">
                     <el-col :span="14" :sm="14" :offset="2" class="hidden-xs-only">
-                            <video height="450px" controls="controls" autoplay="autoplay">
-                                <source src="./texie.mp4" type="video/mp4">                        
-                            </video>
+                        <video height="450px" controls="controls" autoplay="autoplay">
+                            <source src="./texie.mp4" type="video/mp4">
+                        </video>
                     </el-col>
-                    <el-col :span="6" :offset="3" :sm="4" :xs="21" >
-                            <div class="sec_2_right">
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在人生岁月中，了然于心的情怀，其实一直都在心底；</p><br>
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然总有些错过，有些遗憾，毕竟已在岁月的长河中得到释疑和诠注。也因为爱和宽容，竟也出落得错落有致，在素色年华里，虽然会有孤独，却也不乏美丽。</p><br>
-                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，流年似水，总有一些记忆会愈久弥新，也总有一些记忆，会在不经意间消逝...</p>
-                            </div>
+                    <el-col :span="6" :offset="3" :sm="4" :xs="21">
+                        <div class="sec_2_right">
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在人生岁月中，了然于心的情怀，其实一直都在心底；</p>
+                            <br>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然总有些错过，有些遗憾，毕竟已在岁月的长河中得到释疑和诠注。也因为爱和宽容，竟也出落得错落有致，在素色年华里，虽然会有孤独，却也不乏美丽。</p>
+                            <br>
+                            <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是，流年似水，总有一些记忆会愈久弥新，也总有一些记忆，会在不经意间消逝...</p>
+                        </div>
                     </el-col>
-                </el-row>        
+                </el-row>
             </div>
             <!-- 第三部分 -->
             <div class="sec_3">
-               
+                <div class="tiler">
+                    <img src="/image/sy01.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy01.jpg"></div>
+                </div>
+                <div class="tiler">
+                    <img src="/image/sy09.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy09.jpg"></div>
+                </div>
+                <div class="tiler">
+                    <img src="/image/sy03.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy03.jpg"></div>
+                </div>
+                <div class="tiler">
+                    <img src="/image/sy04.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy04.jpg"></div>
+                </div>
+                <div class="tiler">
+                    <img src="/image/sy07.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy07.jpg"></div>
+                </div>
+                <div class="tiler">
+                    <img src="/image/sy06.jpg" />
+                    <div class="tiler-overlay" data-image="/image/sy06.jpg"></div>
+                </div>
+            </div>
+            <!-- 第四部分 -->
+            <div class="sec_4">
+                <h1>美妆达人</h1>
+                
             </div>
         </section>
         <!-- 这是底部区域 -->
         <%include footer.html%>
-        <script>
-            new Vue({
-                el: "#app",
-                data: {
-                    right_img:"<img src='/image/first_1.png' alt='图片'>"
-                },
-                methods:{
-                    
-                }
-            })
-        </script>
+            <script>
+                new Vue({
+                    el: "#app",
+                    data: {
+                        right_img: "<img src='/image/first_1.png' alt='图片'>"
+                    },
+                    methods: {
 
-    <!-- </div>
-    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.min.js"></script>
-    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-</body>
-</html> -->
+                    }
+                })
+            </script>
+            <script src="/js/largetwo.js"></script>
