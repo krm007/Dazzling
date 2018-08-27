@@ -6,14 +6,13 @@
                         <el-input v-model="formdata.workname"></el-input>
                     </el-form-item>
                     <el-form-item label="作品分类">
-                        <el-select v-model="formdata.wname"  placeholder="请选择作品分类">
-                            <el-option label="口红" value="口红">口红</el-option>
-                            <el-option label="睫毛" value="睫毛">睫毛</el-option>
-                            <el-option label="眉笔" value="眉笔">眉笔</el-option>
-                            <el-option label="眼线" value="眼线">眼线</el-option>
-                            <el-option label="粉底" value="粉底">粉底</el-option>
-                            <el-option label="眼影" value="1">眼影</el-option>
+                       
+                        <el-select v-model="formdata.wid"  placeholder="请选择作品分类">
+                                <%for(let r of results){%>
+                            <el-option label="<%=r.wname%>" value="<%=r.wid%>"><%=r.wname%></el-option>
+                            <%}%>
                         </el-select>
+                       
                     </el-form-item>
                     <el-form-item label="作品描述">
                         <el-input v-model="formdata.desc"></el-input>
@@ -80,18 +79,20 @@
                 progress: '',
                 desc: '',
                 kwd: '',
-                wname: '',
+                wname:'',
+                wid:0,
                 dialogImageUrl: [],
                 dialogVisible: false
             }
         },
         methods: {
-            // 上传整个表单
+            // 上传整个表单，一定要用QS，前提是要引用
             upmywork() {
+                let this_=this;
                 this.formdata.progress = document.getElementById('qtitle').value;
                 axios.post('/personal/publish', Qs.stringify(this.formdata)).then(function (response) {
                     console.log(response);
-                    window.location.reload();
+                    window.location.href="/detil?pid=" + response.data.id;
                 })
                     .catch(function (error) {
                         console.log(error);
@@ -121,7 +122,9 @@
             handlePictureCardPreview(file) {
                 // this.formdata.dialogImageUrl = file.url;
                 // this.formdata.dialogVisible = true;
-            }
+            },
+                
+         
     
             }
 

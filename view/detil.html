@@ -48,7 +48,7 @@
                     <%for(let dis of discuss){%>
                     <div class="history">
                         <div class="comleft">
-                            <img src="<%=maybe[0].header%>" alt="" class="cheader">
+                            <img src="<%=dis.header%>" alt="" class="cheader">
                         </div>
                         <div class="comright">
                             <div>
@@ -98,9 +98,12 @@
                             <el-input type="textarea" :rows="4" v-model="myformdata.textarea"></el-input>
                         </el-form-item>
                         <el-form-item>
-                            <el-button type="primary" @click="upmydiss" class="mypbutton">上传
+                            <el-button type="primary" @click="upmydiss" class="mypbutton"  >发表
                                 <i class="el-icon-upload el-icon--right"></i>
                             </el-button>
+                            <template>
+                                <el-button :plain="true" @click="open8" class="hidden">错误</el-button>
+                              </template>
                         </el-form-item>
                         <el-form>
                 </div>
@@ -198,7 +201,13 @@
                     },
                     methods: {
                         upmydiss() {
+                            let This =this;
                             axios.post('/detil', Qs.stringify(this.myformdata)).then(function (response) {
+                                if(response.data.r=="didnotlogin"){
+                                    This.open8();
+                                    
+                                    return;
+                                }
                                 console.log(response);
                                 console.log("发表评论");
                                 window.location.reload();
@@ -218,16 +227,21 @@
                                 });
                         },
                         collection(){
-                            axios.post('/detil/collection',Qs.stringify(
-                                { mycollectnums:'<%=publish.collectnums%>',
-                                  pid:'<%=publish.pid%>'
-                                })).then(function(response){
+                            axios.post('/detil/collection',Qs.stringify({ mycollectnums:'<%=publish.collectnums%>',
+                            pid:'<%=publish.pid%>'})).then(function(response){
                                 console.log(response);
                                 window.location.reload();
                             })
                                 .catch(function (error) {
                                     console.log(error);
                                 });
+                        },
+                        open8() {
+                            this.$message({
+                                showClose: true,
+                                message: '发表评论，请先登录哦~~',
+                                type: 'error'
+                            });
                         }
                     }
 

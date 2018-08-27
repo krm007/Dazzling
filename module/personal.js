@@ -253,7 +253,19 @@ module.exports = function () {
     })
 
     router.get('/publish', (req, res) => {
-        res.render('publish')
+        
+        let sql =`select wid ,uid, wname from workclass where status=0 `;
+        mydb.query(sql,(err,results)=>{
+            if(err){
+                console.log(err);
+                res.json({r:'db_err'})
+            }else{
+                res.render('publish',{
+                    results:results
+                })
+            }
+        });
+      
     });
     router.post('/publish', (req, res) => {
         let p = req.body;
@@ -261,10 +273,13 @@ module.exports = function () {
         console.log(req.session.username, req.session.uid);
         let sql = `INSERT INTO  publish(workname,description,keywords,progress,addtime,imglist,wname,uid,username) VALUES (?,?,?,?,?,?,?,?,?)`
         mydb.query(sql, [p.workname, p.desc, p.kwd, p.progress, new Date().toLocaleString(), JSON.stringify(p.dialogImageUrl), p.wname, req.session.uid, req.session.username], (err, result) => {
+           console.log(result);
+           let id=result.insertId;
             if (err) {
+                console.log(err);
                 res.json({ r: 'db_err' });
             } else {
-                res.json({ r: 'success' });
+                res.json({ r: 'success', id:id});
             }
         })
     });
