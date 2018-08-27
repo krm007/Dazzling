@@ -37,54 +37,7 @@
             </el-radio-group>
 
             <el-tabs :tab-position="tabPosition" style="height: 200px;">
-                <el-tab-pane label="上传头像">
-                    <h2>点击下方上传个人头像</h2>
-                    <div>
-                        <el-upload class="avatar-uploader" action="/upload" name="editimages" list-type="picture-card" :on-preview="handlePictureCardPreview"
-                            :on-remove="handleRemove" :on-success="uploadSuccess" :show-file-list="false">
-                            <img v-if="dialogImageUrl" :src="dialogImageUrl" class="avatar">
-                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-                        </el-upload>
-                        <!-- <el-dialog :visible.sync="dialogVisible">
-                            <img width="100%" :src="dialogImageUrl" alt="头像">
-                        </el-dialog> -->
-                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-                        <br>
-                        <el-button type="primary" @click="saveheader">保存</el-button>
-                    </div>
-                </el-tab-pane>
-
-                <el-tab-pane label="修改密码">
-                    <h3>修改密码</h3>
-                    <el-form :model="pwForm" :rules="rules" ref="pwForm" label-width="100px" class="demo-ruleForm">
-                        <el-form-item label="原始密码" prop="passwd">
-                            <el-input v-model="pwForm.passwd"></el-input>
-                        </el-form-item>
-                        <el-form-item label="新密码" prop="passwd1">
-                            <el-input type="password" v-model="pwForm.passwd1"></el-input>
-                        </el-form-item>
-                        <el-form-item label="确认新密码" prop="passwd2">
-                            <el-input type="password" v-model="pwForm.passwd2"></el-input>
-                        </el-form-item>
-                        <el-form-item>
-                            <el-button type="primary" @click="updatepw('pwForm')">确定</el-button>
-                        </el-form-item>
-                    </el-form>
-                </el-tab-pane>
-
-                <el-tab-pane label="退出登录">
-                    <el-button type="text" @click="dialogVisible = true">
-                        <h2>点击退出登录</h2>
-                    </el-button>
-
-                    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
-                        <span>是否确认退出登录？</span>
-                        <span slot="footer" class="dialog-footer">
-                            <el-button @click="dialogVisible = false">取 消</el-button>
-                            <el-button type="primary" @click="logout">确 定</el-button>
-                        </span>
-                    </el-dialog>
-                </el-tab-pane>
+                
 
                 <el-tab-pane label="我的发布">
                     <el-row>
@@ -198,9 +151,84 @@
                     </el-row>
                 </el-tab-pane>
 
-                <el-tab-pane label="我的收藏">我的收藏</el-tab-pane>
+                <el-tab-pane label="我的收藏">
+                        <el-row>
+                                <el-col :span="20" :offset="2">
+                                    <% for(let cl of mycollect){%>
+                                        <el-card :body-style="{ padding: '0px'}" shadow="hover" id="post_<%=cl.cid%>" style="border:1px rgb(64, 158, 255) solid">
+                                            <!-- 头部 -->
+                                            <div slot="header" class="clearfix" >
+                                                <time class="time">收藏时间:
+                                                    <%=cl.addtime.toLocaleString()%>
+                                                </time>
+                                                <el-button style="float: right; padding: 3px 0" type="text" @click="delmycollect(<%=cl.cid%>)">
+                                                    <i class="el-icon-delete">删除</i>
+                                                </el-button>
+                                            </div>
+                                            <!-- body -->
+                                            <div style="padding: 14px;">
+                                                    <span style="color: gray">收藏内容:
+                                                        <a href="/detil?pid=<%=cl.pid%>" style="text-decoration: none;color:rgb(64, 158, 255) ">
+                                                            <%=cl.workname%>
+                                                        </a>
+                                                    </span> 
+                                            </div>
+                                        </el-card><br>
+                                        <%}%>
+                                </el-col>
+                            </el-row>
+                </el-tab-pane>
 
                 <el-tab-pane label="消息中心">消息中心</el-tab-pane>
+
+                <el-tab-pane label="上传头像">
+                    <h2>点击下方上传个人头像</h2>
+                    <div>
+                        <el-upload class="avatar-uploader" action="/upload" name="editimages" list-type="picture-card" :on-preview="handlePictureCardPreview"
+                            :on-remove="handleRemove" :on-success="uploadSuccess" :show-file-list="false">
+                            <img v-if="dialogImageUrl" :src="dialogImageUrl" class="avatar">
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                        <!-- <el-dialog :visible.sync="dialogVisible">
+                            <img width="100%" :src="dialogImageUrl" alt="头像">
+                        </el-dialog> -->
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                        <br>
+                        <el-button type="primary" @click="saveheader">保存</el-button>
+                    </div>
+                </el-tab-pane>
+
+                <el-tab-pane label="修改密码">
+                    <h3>修改密码</h3>
+                    <el-form :model="pwForm" :rules="rules" ref="pwForm" label-width="100px" class="demo-ruleForm">
+                        <el-form-item label="原始密码" prop="passwd">
+                            <el-input v-model="pwForm.passwd"></el-input>
+                        </el-form-item>
+                        <el-form-item label="新密码" prop="passwd1">
+                            <el-input type="password" v-model="pwForm.passwd1"></el-input>
+                        </el-form-item>
+                        <el-form-item label="确认新密码" prop="passwd2">
+                            <el-input type="password" v-model="pwForm.passwd2"></el-input>
+                        </el-form-item>
+                        <el-form-item>
+                            <el-button type="primary" @click="updatepw('pwForm')">确定</el-button>
+                        </el-form-item>
+                    </el-form>
+                </el-tab-pane>
+
+                <el-tab-pane label="退出登录">
+                    <el-button type="text" @click="dialogVisible = true">
+                        <h2>点击退出登录</h2>
+                    </el-button>
+
+                    <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+                        <span>是否确认退出登录？</span>
+                        <span slot="footer" class="dialog-footer">
+                            <el-button @click="dialogVisible = false">取 消</el-button>
+                            <el-button type="primary" @click="logout">确 定</el-button>
+                        </span>
+                    </el-dialog>
+                </el-tab-pane>
 
             </el-tabs>
         </template>
@@ -314,6 +342,18 @@
                     }
                     if (response.data.r == "ok") {
                         let mypost = document.getElementById('post_' + mdid);
+                        mypost.style.display = "none";
+                    }
+                });
+            },
+            delmycollect:function(cid){
+                axios.post('./delmycollect', Qs.stringify({ cid:cid })).then(response => {
+                    // console.log(response.data.r);
+                    if (!confirm('确认删除？')) {
+                        return;
+                    }
+                    if (response.data.r == "ok") {
+                        let mypost = document.getElementById('post_' + cid);
                         mypost.style.display = "none";
                     }
                 });

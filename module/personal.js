@@ -127,7 +127,17 @@ module.exports = function () {
                     if (err) {
                         console.log(err);
                     }
-                    console.log(result);
+                    // console.log(result);
+                    cb(null, result);
+                });
+            },
+            mycollect: function (cb) {
+                let sql = 'SELECT c.*,p.workname,p.pid FROM collection AS c LEFT JOIN publish AS p ON c.pid=p.pid WHERE c.uid=?';
+                mydb.query(sql, req.session.uid, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    }
+                    // console.log(result);
                     cb(null, result);
                 });
             }
@@ -166,13 +176,26 @@ module.exports = function () {
             res.json({ r: 'ok' });
         });
     });
+    //删除我的收藏
+    router.post('/delmycollect', (req, res) => {
+        let delsql = 'UPDATE collection SET status=1 WHERE cid=?';
+        mydb.query(delsql, req.body.cid, (err, result) => {
+            if (err) {
+                console.log(err);
+                res.json({ r: 'db_err' });
+                return;
+            }
+            res.json({ r: 'ok' });
+        });
+    });
+
     //上传头像
     router.post('/saveheader', (req, res) => {
         let header = req.body.header;
         let sql = 'UPDATE user SET header = ? WHERE uid = ? LIMIT 1';
         mydb.query(sql, [header, req.session.uid], (err, result) => {
             //新的头像地址要同步更新到session里面
-            req.session.header=header;
+            req.session.header = header;
             res.json({ r: 'ok' });
         });
     });

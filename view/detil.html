@@ -218,8 +218,10 @@
                                 });
                         },
                         collection(){
-                            axios.post('/detil/collection',Qs.stringify({ mycollectnums:'<%=publish.collectnums%>',
-                            pid:'<%=publish.pid%>'})).then(function(response){
+                            axios.post('/detil/collection',Qs.stringify(
+                                { mycollectnums:'<%=publish.collectnums%>',
+                                  pid:'<%=publish.pid%>'
+                                })).then(function(response){
                                 console.log(response);
                                 window.location.reload();
                             })
