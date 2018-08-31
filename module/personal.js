@@ -46,8 +46,10 @@ module.exports = function () {
 
     //处理登录页面
     router.post('/login', (req, res) => {
+       
         //验证验证码是否正确
         let q = req.body;
+        console.log(q);
         if (req.session.captcha.toLowerCase() != q.coder.toLowerCase()) {
             res.json({ r: 'coder_err' });
             return;
@@ -57,6 +59,7 @@ module.exports = function () {
         mydb.query(sql, [q.username, q.username], (err, result) => {
             console.log(err);
             if (!result.length) {
+                console.log(result);
                 res.json({ r: 'not_exist' });
                 return;
             }

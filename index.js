@@ -11,6 +11,9 @@ const session = require('express-session');
 const multer = require('multer');
 const server = express();
 
+
+  
+
 //图片上传的相关配置
 var diskstorage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -100,6 +103,10 @@ server.post('/upload', upload.array('editimages'), (req, res) => {
 server.use('/', require('./module/index')());
 //个人中心页面
 server.use('/personal', require('./module/personal')());
+
+server.use('/app', require('./module/app')());
+
+
 
 
 
