@@ -15,13 +15,13 @@ module.exports = function () {
     router.get('/perfect', (req, res) => {
         async.series({
             mostcollect: function (cb) {
-                let sql = `select workname,description,addtime,imglist,pid from publish order by collectnums  asc limit 10`;
+                let sql = `select workname,description,addtime,imglist,pid from publish order by collectnums  desc limit 10`;
                 mydb.query(sql, (err, results) => {
                     cb(null, results)
                 })
             },
             mostlike: function (cb) {
-                let sql = `select workname,description,addtime,imglist,pid from publish order by zannums  asc limit 8`;
+                let sql = `select workname,description,addtime,imglist,pid from publish order by zannums  desc limit 8`;
                 mydb.query(sql, (err, results) => {
                     cb(null, results)
                 })
